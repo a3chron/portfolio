@@ -6,10 +6,10 @@ import { Article } from "./article";
 
 export const revalidate = 60;
 export default async function ProjectsPage() {
-  const featured = allProjects.find(
+  const featured = allProjects.find((project) => project.slug === "gith")!;
+  const top2 = allProjects.find(
     (project) => project.slug === "nextjs-auth-template",
   )!;
-  const top2 = allProjects.find((project) => project.slug === "gith")!;
   const top3 = allProjects.find((project) => project.slug === "portfolio")!;
   const sorted = allProjects
     .filter((p) => p.published)
@@ -21,8 +21,8 @@ export default async function ProjectsPage() {
     )
     .sort(
       (a, b) =>
-        new Date(b.date ?? Number.POSITIVE_INFINITY).getTime() -
-        new Date(a.date ?? Number.POSITIVE_INFINITY).getTime(),
+        new Date(a.date ?? Number.POSITIVE_INFINITY).getTime() -
+        new Date(b.date ?? Number.POSITIVE_INFINITY).getTime(),
     );
 
   return (
@@ -31,7 +31,7 @@ export default async function ProjectsPage() {
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 xl:mt-8">
           <Link
             href={`/projects/${featured.slug}`}
-            className="hover:no-underline bg-mantle text-text border-2 border-teal rounded-2xl"
+            className="hover:no-underline group bg-mantle text-text border-2 border-teal rounded-2xl"
           >
             <div className="relative w-full h-full p-4 md:p-8">
               <div className="flex items-center justify-between gap-2">
@@ -46,7 +46,6 @@ export default async function ProjectsPage() {
                     <span>SOON</span>
                   )}
                 </div>
-                {/**TODO: mybe here wie bei vercel der screenshot, um die website zu sehen */}
               </div>
 
               {featured.appLogo ? (
@@ -54,19 +53,19 @@ export default async function ProjectsPage() {
                   <div className="flex flex-row items-center justify-start w-full gap-4">
                     <h2
                       id="featured-post"
-                      className="text-3xl duration-300 font-bold text-hover sm:text-4xl font-plex text-nowrap w-full"
+                      className="text-3xl duration-300 font-bold text-hover sm:text-4xl font-plex text-nowrap w-fit"
                     >
                       {featured.title}
                     </h2>
                     <div className="h-[2px] w-0 bg-linear-to-r from-teal/0 to-transparent group-hover:w-full group-hover:to-teal duration-700" />
                   </div>
-                  <div className="rounded-full h-fit w-fit ring-2 ring-mantle group-hover:ring-teal shadow-md shadow-crust group-hover:shadow-text duration-150 delay-300 ring-offset-2 ring-offset-crust">
+                  <div className="rounded-full ring-2 ring-mantle shrink-0 group-hover:ring-teal shadow-md shadow-crust group-hover:shadow-text duration-150 delay-300 ring-offset-2 ring-offset-crust">
                     <Image
-                      width={36}
-                      height={36}
+                      width={44}
+                      height={44}
                       alt={`${featured.title} logo`}
                       src={featured.appLogo}
-                      className="rounded-full object-scale-down"
+                      className="rounded-full object-cover w-12 h-12"
                     />
                   </div>
                 </div>
