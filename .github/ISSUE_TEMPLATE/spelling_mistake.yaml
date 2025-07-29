@@ -2,7 +2,7 @@ name: "Spelling Mistake"
 description: "Fill out this form, so I can fix my mistake"
 title: "Spelling: "
 labels: "spelling"
-assignees: kurtschambach
+assignees: a3chron
 body:
   - type: markdown
     attributes:

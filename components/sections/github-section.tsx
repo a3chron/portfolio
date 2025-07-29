@@ -24,7 +24,7 @@ const GithubSection = () => {
             <h1 className="text-4xl font-bold flex items-center gap-3">
               Find me on{" "}
               <Link
-                href="https://github.com/kurtschambach"
+                href="https://github.com/a3chron"
                 target="_blank"
                 className="underline text-crust"
               >
@@ -62,14 +62,14 @@ const GithubSection = () => {
               <RepoCard
                 name="Portfolio"
                 description="My portfolio website "
-                href="https://github.com/kurtschambach/portfolio"
+                href="https://github.com/a3chron/portfolio"
                 stars={1}
                 forks={0}
               />
               <RepoCard
                 name="NextJS Auth Template"
                 description="A Template for NextJS projects using Auth.js"
-                href="https://github.com/kurtschambach/nextjs-auth-template"
+                href="https://github.com/a3chron/nextjs-auth-template"
                 stars={0}
                 forks={0}
               />

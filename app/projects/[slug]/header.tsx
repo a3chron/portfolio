@@ -17,7 +17,7 @@ export const Header: React.FC<Props> = ({ project }) => {
   if (project.repo) {
     const repoLink = project.repo.includes("/")
       ? `https://github.com/${project.repo}`
-      : `https://github.com/kurtschambach/${project.repo}`;
+      : `https://github.com/a3chron/${project.repo}`;
     links.push({
       label: "Repo",
       href: repoLink,

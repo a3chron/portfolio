@@ -35,5 +35,5 @@ SUPABASE_API_KEY=your-secret-key
 
 Please remove all of my personal information (projects, images, articles, etc.) before deploying your own version of this site.
 
-<p align="center"><a href="https://github.com/kurtschambach/portfolio/blob/main/LICENSE"><img alt="GitHub License" src="https://img.shields.io/github/license/kurtschambach/portfolio?style=for-the-badge&labelColor=363a4f&color=b7bdf8">
+<p align="center"><a href="https://github.com/a3chron/portfolio/blob/main/LICENSE"><img alt="GitHub License" src="https://img.shields.io/github/license/a3chron/portfolio?style=for-the-badge&labelColor=363a4f&color=b7bdf8">
 </a></p>

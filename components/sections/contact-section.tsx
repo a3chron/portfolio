@@ -14,7 +14,7 @@ const ContactSection = () => {
     },
     {
       icon: <Github size={20} />,
-      href: "https://github.com/kurtschambach",
+      href: "https://github.com/a3chron",
       label: "Github",
       handle: "a3chron",
     },
