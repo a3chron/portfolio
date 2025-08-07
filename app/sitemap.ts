@@ -31,13 +31,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }));
 
   // TODO: generate projects too
-  const projects = ["next-js-auth-template", "portfolio", "userstyles"].map(
-    (slug) => ({
-      url: `${baseUrl}/projects/${slug}`,
-      changeFrequency: "monthly" as const,
-      priority: 0.5,
-    }),
-  );
+  const projects = [
+    "next-js-auth-template",
+    "portfolio",
+    "userstyles",
+    "gith",
+  ].map((slug) => ({
+    url: `${baseUrl}/projects/${slug}`,
+    changeFrequency: "monthly" as const,
+    priority: 0.5,
+  }));
 
   return [...staticPages, ...blogPosts, ...projects];
 }
