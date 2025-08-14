@@ -28,7 +28,7 @@ const ColorHeader: React.FC<{ children: React.ReactNode; topic: string }> = ({
     }
     default: {
       return (
-        <div className="flex flex-row items-center justify-between h-14 w-full bg-crust text-text border-b-2 border-sapphire rounded-t-xl px-8">
+        <div className="flex flex-row items-center justify-between h-14 w-full bg-crust text-text border-b-2 border-subtext rounded-t-xl px-8">
           {children}
         </div>
       );
