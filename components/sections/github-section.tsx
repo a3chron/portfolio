@@ -4,9 +4,9 @@ import Link from "next/link";
 
 const stats = {
   // TODO get by github API
-  repos: 26,
-  stars: 2,
-  forks: 2,
+  repos: 20,
+  stars: 6,
+  forks: 0,
   contributions: 2,
   followers: 8,
 };
@@ -14,29 +14,30 @@ const stats = {
 const GithubSection = () => {
   return (
     <Block className="bg-blue selection:text-blue">
-      <div className="w-dvw 2xl:w-384 h-fit min-h-dvh p-24 flex flex-col item-center justify-center">
-        <h1 className="uppercase text-6xl text-blue bg-crust mb-24 w-fit p-1 px-2">
+      <div className="w-dvw 2xl:w-384 h-fit min-h-dvh p-4 md:py-12 md:px-24 flex flex-col item-center justify-center">
+        <h1 className="uppercase text-4xl md:text-6xl text-blue bg-crust my-6 md:mb-24 w-fit p-1 px-2">
           #2 GitHub
         </h1>
 
-        <div className="grid grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div className="col-span-2">
-            <h1 className="text-4xl font-bold flex items-center gap-3">
+            <h1 className="text-4xl font-bold">
               Find me on{" "}
               <Link
                 href="https://github.com/a3chron"
                 target="_blank"
-                className="underline text-crust"
+                className="underline text-crust inline-flex"
               >
                 GitHub
               </Link>
             </h1>
 
-            <p className="text-2xl font-semibold mt-12 w-2/3">
-              I have most of my projects on github, feel free to take a look.
+            <p className="text-2xl font-semibold mt-12 w-full md:w-2/3">
+              Most of my projects are public on GitHub, feel free to take a
+              look.
             </p>
 
-            <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl">
+            <div className="mt-12 grid grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-4xl">
               <StatCard
                 icon={<BookMarked />}
                 value={stats.repos}
@@ -60,10 +61,10 @@ const GithubSection = () => {
             <h2 className="text-2xl font-bold mb-4">Featured Repositories</h2>
             <div className="grid grid-rows-2 gap-6">
               <RepoCard
-                name="Portfolio"
-                description="My portfolio website "
-                href="https://github.com/a3chron/portfolio"
-                stars={1}
+                name="Gith"
+                description="A Terminal UI git helper"
+                href="https://github.com/a3chron/gith"
+                stars={6}
                 forks={0}
               />
               <RepoCard

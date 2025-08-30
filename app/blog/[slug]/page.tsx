@@ -80,7 +80,7 @@ export default async function ArticlePage({ params }: Props) {
         </span>
       </div>
       <div className="h-full w-full overflow-y-scroll p-4 bg-mantle relative">
-        <div className="group w-[80dvw] max-w-5xl mx-auto h-full">
+        <div className="group w-[85dvw] max-w-5xl ml-auto h-full">
           <div className="lg:absolute top-16 right-6">
             <FullScreenSwitch />
           </div>

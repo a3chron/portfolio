@@ -4,34 +4,34 @@ import { Code2, ExternalLink, Github } from "lucide-react";
 import { allProjects } from "contentlayer/generated";
 
 const ProjectsSection = () => {
-  const featured = allProjects.find(
+  const featured = allProjects.find((project) => project.slug === "gith")!;
+  const top2 = allProjects.find((project) => project.slug === "portfolio")!;
+  const top3 = allProjects.find(
     (project) => project.slug === "nextjs-auth-template",
   )!;
-  const top2 = allProjects.find((project) => project.slug === "portfolio")!;
-  const top3 = allProjects.find((project) => project.slug === "pred-prey-rd")!;
 
   const featuredProjects = [featured, top2, top3].filter((p) => p);
 
   return (
     <Block className="bg-teal selection:text-teal">
-      <div className="w-dvw 2xl:w-384 h-fit min-h-dvh p-24 flex flex-col item-center justify-center">
-        <h1 className="uppercase text-6xl text-teal bg-crust mb-24 w-fit p-1 px-2">
+      <div className="w-dvw 2xl:w-384 h-fit min-h-dvh p-4 md:py-12 md:px-24 flex flex-col item-center justify-center">
+        <h1 className="uppercase text-4xl md:text-6xl text-teal bg-crust my-6 md:mb-24 w-fit p-1 px-2">
           #4 Projects
         </h1>
         <div className="grid grid-cols-1 gap-8">
           <div>
-            <h1 className="text-4xl font-bold flex items-center gap-3">
+            <h1 className="text-2xl md:text-4xl font-bold gap-3">
               Check out my{" "}
               <Link href="/projects" className="underline text-crust">
                 Projects
               </Link>
             </h1>
-            <p className="text-2xl font-semibold mt-12 w-2/3 mb-12">
+            <p className="text-xl md:text-2xl font-semibold mt-12 w-full md:w-2/3">
               I have several little projects, few of which are not work in
               progress, but nevertheless you can have a look at them:
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             {featuredProjects.map((project) => (
               <ProjectCard
                 key={project.slug}

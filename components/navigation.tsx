@@ -18,7 +18,7 @@ const Navigation = ({ className }: { className?: string }) => {
       <div className="max-w-384 w-full flex flex-row items-center justify-between p-4 md:px-12 lg:px-24 mx-auto">
         <Link
           href="/"
-          className="mt-6 md:mt-0 w-fit flex flex-col items-center justify-center text-crust font-bold font-plex text-3xl whitespace-nowrap no-underline!"
+          className="mt-0 w-fit flex flex-col items-center justify-center text-crust font-bold font-plex text-3xl whitespace-nowrap no-underline!"
         >
           <span className="text-lg">Kurt Schambach</span>
           <span className="pl-6">a3chron</span>
@@ -29,7 +29,7 @@ const Navigation = ({ className }: { className?: string }) => {
               onClick={() => setMenuOpen(false)}
               className="z-30 bg-transparent backdrop-blur-xl fixed left-0 top-0 w-screen h-screen flex md:hidden items-center justify-center"
             >
-              <ul className="flex flex-col items-center justify-center gap-8 bg-mantle p-4 px-6 rounded-xl border-2 border-text">
+              <ul className="flex flex-col items-center justify-center gap-8 bg-mantle p-8 px-12 rounded-3xl border-2 border-crust">
                 {navigation.map((item) => (
                   <Link
                     key={item.href}
@@ -56,7 +56,7 @@ const Navigation = ({ className }: { className?: string }) => {
           </ul>
           <div
             onClick={() => setMenuOpen((prevBool) => !prevBool)}
-            className="z-40 sticky block md:hidden bg-mantle p-4 mt-7 cursor-pointer rounded-xl text-text hover:text-hover duration-500"
+            className="z-40 sticky block md:hidden bg-mantle p-4 cursor-pointer rounded-xl text-text hover:text-hover duration-500"
           >
             {menuOpen ? <X /> : <Menu />}
           </div>

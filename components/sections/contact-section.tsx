@@ -28,16 +28,16 @@ const ContactSection = () => {
 
   return (
     <Block className="bg-yellow selection:text-yellow">
-      <div className="w-dvw 2xl:w-384 h-fit min-h-dvh p-24 flex flex-col item-center justify-center">
-        <h1 className="uppercase text-6xl text-yellow bg-crust mb-24 w-fit p-1 px-2">
+      <div className="w-dvw 2xl:w-384 h-fit min-h-dvh p-4 md:py-12 md:px-24 flex flex-col item-center justify-center">
+        <h1 className="uppercase text-4xl md:text-6xl text-yellow bg-crust mb-6 md:mb-24 w-fit p-1 px-2">
           #5 Contact
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div>
-            <h1 className="text-4xl font-bold flex items-center gap-3">
+            <h1 className="text-2xl md:text-4xl font-bold flex items-center gap-3">
               Let&apos;s Get In Touch
             </h1>
-            <p className="text-2xl font-semibold mt-12 w-2/3">
+            <p className="text-xl md:text-2xl font-semibold mt-12 w-full md:w-2/3">
               Have a question or want to work together? Feel free to reach out
               :)
             </p>
@@ -73,7 +73,7 @@ function SocialCard({
       <div className="bg-yellow text-crust p-4 rounded-full">{icon}</div>
       <div>
         <h3 className="text-lg font-bold text-yellow">{label}</h3>
-        <p className="text-subtext">{handle}</p>
+        <p className="text-subtext break-all max-w-full">{handle}</p>
       </div>
       <div className="ml-auto">
         <ExternalLink size={20} className="text-gray-400" />

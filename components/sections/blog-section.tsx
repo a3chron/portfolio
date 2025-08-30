@@ -37,19 +37,19 @@ const BlogSection = () => {
 
   return (
     <Block className="bg-sapphire selection:text-sapphire">
-      <div className="w-dvw 2xl:w-384 h-fit min-h-dvh p-24 flex flex-col item-center justify-center">
-        <h1 className="uppercase text-6xl text-sapphire bg-crust mb-24 w-fit p-1 px-2">
+      <div className="w-dvw 2xl:w-384 h-fit min-h-dvh p-4 md:py-12 md:px-24 flex flex-col item-center justify-center">
+        <h1 className="uppercase text-4xl md:text-6xl text-sapphire bg-crust mb-6 md:mb-24 w-fit p-1 px-2">
           #3 Blog
         </h1>
-        <div className="grid grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div className="col-span-2">
-            <h1 className="text-4xl font-bold flex items-center gap-3">
+            <h1 className="text-2xl md:text-4xl font-bold gap-3">
               Have a look on my{" "}
-              <Link href="/blog" className="underline text-crust">
+              <Link href="/blog" className="underline text-crust inline">
                 Blog
               </Link>
             </h1>
-            <p className="text-2xl font-semibold mt-12 w-2/3">
+            <p className="text-xl md:text-2xl font-semibold mt-12 w-full md:w-2/3">
               As I am trying to get more into AI, I collect some of my findings
               in a more or less readable format here. <br />
               I also write about Gnome customization, feel free to check that
@@ -70,7 +70,9 @@ const BlogSection = () => {
               ))}
             </div>
           </div>
-          <div className="mt-12">
+          <div className="hidden mt-12">
+            {" "}
+            {/**TODO: do sth with this, finish or remove */}
             <h2 className="text-2xl font-bold mb-4">Categories</h2>
             <div className="flex flex-col gap-4">
               {categories.map((category) => (

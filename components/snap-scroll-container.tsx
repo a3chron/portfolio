@@ -37,6 +37,7 @@ export default function SnapScrollContainer({
 
   const handleWheel = (e: React.WheelEvent<HTMLDivElement> | undefined) => {
     if (isScrolling) return;
+    if (window !== undefined && window.innerWidth <= 1024) return;
     if (e === undefined) return;
 
     setIsScrolling(true);
@@ -70,10 +71,10 @@ export default function SnapScrollContainer({
         )}
       />
       <div
-        className="flex flex-col snap-y h-[calc(100dvh-96px)] w-dvw overflow-y-auto scrollbar-thin scrollbar-track-base scrollbar-thumb-text"
+        className="flex flex-col lg:snap-y h-fit lg:h-[calc(100dvh-96px)] w-dvw overflow-y-auto scrollbar-thin scrollbar-track-base scrollbar-thumb-text"
         onWheel={handleWheel}
       >
-        <div className="absolute group top-1/2 -translate-y-1/2 left-6 h-fit w-fit p-2 rounded-full bg-base space-y-2">
+        <div className="hidden md:block absolute group top-1/2 -translate-y-1/2 left-6 h-fit w-fit p-2 rounded-full bg-base space-y-2">
           {sections.map((_, index) => (
             <SectionTooltip
               key={index}

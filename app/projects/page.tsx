@@ -97,7 +97,7 @@ export default async function ProjectsPage() {
 
         <div className="w-full h-px bg-linear-to-l from-black/0 via-black to-black/0" />
 
-        <div className="grid grid-cols-1 gap-4 mx-auto lg:mx-0 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 mx-auto lg:mx-0 md:grid-cols-3 pb-6">
           <div className="grid grid-cols-1 gap-4">
             {sorted
               .filter((_, i) => i % 3 === 0)
