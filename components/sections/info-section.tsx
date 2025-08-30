@@ -5,7 +5,7 @@ const InfoSection = () => {
   return (
     <Block className="bg-mauve selection:text-mauve">
       <div className="w-dvw 2xl:w-384 h-fit min-h-dvh p-4 md:py-12 md:px-24 flex flex-col item-center justify-center">
-        <h1 className="uppercase text-4xl md:text-6xl text-mauve bg-crust -mt-16 md:-mt-24 mb-6 md:mb-24 w-fit p-1 px-2">
+        <h1 className="uppercase text-4xl md:text-6xl text-mauve bg-crust -mt-6 md:-mt-24 mb-6 md:mb-24 w-fit p-1 px-2">
           #1 About Me
         </h1>
         <h1 className="text-2xl md:text-4xl font-bold space-y-4 md:space-y-0">
