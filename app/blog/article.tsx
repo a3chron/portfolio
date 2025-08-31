@@ -55,11 +55,8 @@ export const Article: React.FC<Props> = ({ article }) => {
               <span>SOON</span>
             )}
           </span>
-          <span className="hidden sm:block text-xs duration-300 group-hover:bg-sapphire group-hover:text-black rounded-md p-1 px-3">
+          <span className="text-xs duration-300 group-hover:bg-sapphire group-hover:text-black rounded-md p-1 px-3">
             {readingTime(`${article.body.code}`).text}
-          </span>
-          <span className="block sm:hidden text-xs duration-300 group-hover:bg-sapphire group-hover:text-black rounded-md p-1 px-3">
-            {readingTime(`${article.body.code}`).minutes}m
           </span>
         </ColorHeader>
         <div className="p-8 border-2 border-t-0 border-mantle h-fit sm:h-56 rounded-b-2xl">
