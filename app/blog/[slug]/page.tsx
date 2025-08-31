@@ -80,13 +80,13 @@ export default async function ArticlePage({ params }: Props) {
         </span>
       </div>
       <div className="h-full w-full overflow-y-scroll p-4 bg-mantle relative">
-        <div className="group w-[85dvw] max-w-5xl ml-auto h-full">
-          <div className="lg:absolute top-16 right-6">
+        <div className="group w-[85dvw] max-w-5xl ml-auto md:mx-auto h-full">
+          <div className="lg:absolute top-16 right-6 sm:pl-4">
             <FullScreenSwitch />
           </div>
           <article
             className={
-              "px-0 sm:px-4 py-12 mx-auto text-text text-lg font-bold bg-inherit prose sm:prose-quoteless selection:text-black selection:bg-sapphire"
+              "sm:px-4 py-12 mx-auto text-text text-lg font-bold bg-inherit prose sm:prose-quoteless selection:text-black selection:bg-sapphire"
             }
           >
             {!article.published && (
