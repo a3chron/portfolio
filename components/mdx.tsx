@@ -270,10 +270,7 @@ export function Mdx({ code, page }: MdxProps) {
       ...props
     }: React.HTMLAttributes<HTMLTableRowElement>) => (
       <tr
-        className={clsx(
-          "m-0 border-t border-crust p-0 even:bg-bg",
-          className,
-        )}
+        className={clsx("m-0 border-t border-crust p-0 even:bg-bg", className)}
         {...props}
       />
     ),

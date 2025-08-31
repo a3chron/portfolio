@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Block } from "../block";
 import { Code2, ExternalLink, Github } from "lucide-react";
 import { allProjects } from "contentlayer/generated";
+import Image from "next/image";
 
 const ProjectsSection = () => {
   const featured = allProjects.find((project) => project.slug === "gith")!;
@@ -77,7 +78,13 @@ function ProjectCard({
     <div className="bg-crust rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow h-96 max-h-96">
       <div className="h-48 bg-bg flex items-center justify-center">
         {image ? (
-          <img src={image} alt={title} className="w-full h-full object-cover" />
+          <Image
+            src={image}
+            alt={title}
+            width={500}
+            height={300}
+            className="w-full h-full object-cover"
+          />
         ) : (
           <Code2 size={64} className="text-teal opacity-50" />
         )}

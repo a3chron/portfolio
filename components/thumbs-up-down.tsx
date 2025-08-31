@@ -21,7 +21,7 @@ const ThumbsUpDown = ({ articleSlug }: { articleSlug: string }) => {
     };
 
     fetchData();
-  }, []);
+  });
 
   useEffect(() => {
     const votedStorage = localStorage.getItem(`voted-${articleSlug}`);
