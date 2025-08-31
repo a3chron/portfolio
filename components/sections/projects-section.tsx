@@ -15,7 +15,7 @@ const ProjectsSection = () => {
   return (
     <Block className="bg-teal selection:text-teal">
       <div className="w-dvw 2xl:w-384 h-fit min-h-dvh p-4 md:py-12 md:px-24 flex flex-col item-center justify-center">
-        <h1 className="uppercase text-4xl md:text-6xl text-teal bg-crust my-6 md:mb-24 w-fit p-1 px-2">
+        <h1 className="uppercase text-4xl md:text-6xl text-teal bg-crust my-6 md:mb-16 w-fit p-1 px-2">
           #4 Projects
         </h1>
         <div className="grid grid-cols-1 gap-8">
@@ -75,7 +75,7 @@ function ProjectCard({
 }) {
   return (
     <div className="bg-crust rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow h-96 max-h-96">
-      <div className="h-48 bg-base flex items-center justify-center">
+      <div className="h-48 bg-bg flex items-center justify-center">
         {image ? (
           <img src={image} alt={title} className="w-full h-full object-cover" />
         ) : (

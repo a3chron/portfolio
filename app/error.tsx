@@ -11,7 +11,7 @@ export default function Error({
 }) {
   console.error(error);
   return (
-    <div className="w-full h-full bg-base flex flex-col items-center justify-center">
+    <div className="w-full h-full bg-bg flex flex-col items-center justify-center">
       <div className="text-text bg-mantle border-2 border-text/60 rounded-2xl p-8 px-12 flex flex-col items-center justify-center gap-6">
         <h2 className="font-bold text-2xl">Something went wrong!</h2>
         <div className="w-full h-fit flex gap-4 items-center justify-center">

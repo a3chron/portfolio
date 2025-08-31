@@ -75,14 +75,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`bg-base ${
+        className={`bg-bg ${
           process.env.NODE_ENV === "development" ? "debug-screens" : undefined
         }`}
       >
         <Analytics />
         <ToggleFavicon />
         <GithubRepo />
-        <div className="w-dvw h-dvh bg-base">{children}</div>
+        <div className="w-dvw h-dvh bg-bg">{children}</div>
       </body>
     </html>
   );

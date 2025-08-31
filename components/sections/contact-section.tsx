@@ -29,7 +29,7 @@ const ContactSection = () => {
   return (
     <Block className="bg-yellow selection:text-yellow">
       <div className="w-dvw 2xl:w-384 h-fit min-h-dvh p-4 md:py-12 md:px-24 flex flex-col item-center justify-center">
-        <h1 className="uppercase text-4xl md:text-6xl text-yellow bg-crust mb-6 md:mb-24 w-fit p-1 px-2">
+        <h1 className="uppercase text-4xl md:text-6xl text-yellow bg-crust my-6 md:mb-16 w-fit p-1 px-2">
           #5 Contact
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
