@@ -28,7 +28,7 @@ const ThumbsUpDown = ({ articleSlug }: { articleSlug: string }) => {
     if (!votedStorage) {
       setAlreadyVoted(false);
     }
-  }, []);
+  }, [articleSlug]);
 
   const like = async () => {
     if (!alreadyVoted) {

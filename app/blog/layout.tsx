@@ -13,6 +13,13 @@ export const metadata: Metadata = {
     description: "Read my latest thoughts on Ubuntu Customization and AI",
     url: "https://a3chron.vercel.app/blog",
   },
+  alternates: {
+    types: {
+      "application/rss+xml": [{ url: "/feed.xml", title: "RSS Feed" }],
+      "application/atom+xml": [{ url: "/atom.xml", title: "Atom Feed" }],
+      "application/json": [{ url: "/feed.json", title: "Json Feed" }],
+    },
+  },
 };
 
 export default function BlogLayout({
