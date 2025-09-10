@@ -1,12 +1,66 @@
-import { generateFeeds } from "@/lib/generate-feeds";
+import { Feed } from "feed";
+import { allArticles } from "contentlayer/generated";
+import { FEED_CONFIG, getArticleUrl } from "@/lib/feed-config";
+import { markdownToHtml } from "@/lib/markdown-to-html";
 
 export async function GET() {
-  const feed = generateFeeds();
+  try {
+    const feed = new Feed(FEED_CONFIG);
 
-  return new Response(feed.atom1(), {
-    headers: {
-      "Content-Type": "application/atom+xml; charset=utf-8",
-      "Cache-Control": "public, max-age=3600, s-maxage=3600",
-    },
-  });
+    const publishedArticles = allArticles
+      .filter((article) => article.published)
+      .sort((a, b) => {
+        if (a.date && b.date) {
+          return new Date(b.date).getTime() - new Date(a.date).getTime();
+        }
+        return 0;
+      })
+      .slice(0, 20);
+
+    for (const article of publishedArticles) {
+      const articleUrl = getArticleUrl(article.slug);
+
+      const htmlContent = await markdownToHtml(article.body.raw);
+
+      const contentWithAbsoluteImages = htmlContent.replace(
+        /src="\/([^"]+)"/g,
+        `src="${FEED_CONFIG.link}/$1"`,
+      );
+
+      feed.addItem({
+        title: article.title,
+        id: articleUrl,
+        link: articleUrl,
+        description: article.description,
+        content: contentWithAbsoluteImages,
+        author: [
+          {
+            name: FEED_CONFIG.author.name,
+            email: FEED_CONFIG.author.email,
+            link: FEED_CONFIG.author.link,
+          },
+        ],
+        contributor: [],
+        date: article.date ? new Date(article.date) : new Date(),
+        category: [
+          {
+            name: article.topic,
+            term: article.topic,
+          },
+        ],
+      });
+    }
+
+    const atom = feed.atom1();
+
+    return new Response(atom, {
+      headers: {
+        "Content-Type": "application/atom+xml",
+        "Cache-Control": "s-maxage=1800, stale-while-revalidate=86400",
+      },
+    });
+  } catch (error) {
+    console.error("Atom generation failed:", error);
+    return new Response("Atom generation failed", { status: 500 });
+  }
 }

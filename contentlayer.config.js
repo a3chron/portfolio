@@ -4,7 +4,6 @@ import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import fs from "node:fs";
-import { HashIcon } from "lucide-react";
 
 /** @type {import('contentlayer/source-files').ComputedFields} */
 const computedFields = {
@@ -72,7 +71,7 @@ export const Article = defineDocumentType(() => ({
       required: true,
     },
     topic: {
-      type: "string", // portfolio || devapps || personal || tech
+      type: "string",
       required: true,
     },
     date: {

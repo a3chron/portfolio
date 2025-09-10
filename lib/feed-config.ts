@@ -1,6 +1,6 @@
 export const FEED_CONFIG = {
   title: "a3chron's Blog",
-  description: "feedId:188300005504027648+userId:188212778766035968",
+  description: "Latest articles from a3chron",
   id: "https://a3chron.vercel.app/",
   link: "https://a3chron.vercel.app/",
   language: "en",

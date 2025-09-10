@@ -22,12 +22,13 @@
     "next": "15.4.1",
     "next-contentlayer2": "0.5.8",
     "react": "19.1.0",
-    "react-dom": "19.1.0",
     "reading-time": "1.5.0",
     "rehype-autolink-headings": "7.1.0",
     "rehype-pretty-code": "0.14.1",
     "rehype-slug": "6.0.0",
-    "remark-gfm": "4.0.1"
+    "remark": "^15.0.1",
+    "remark-gfm": "4.0.1",
+    "remark-html": "^16.0.1"
   },
   "devDependencies": {
     "@catppuccin/tailwindcss": "0.1.6",
