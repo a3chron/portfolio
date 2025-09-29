@@ -21,8 +21,20 @@ const InfoSection = () => {
           .
         </h1>
         <p className="text-xl md:text-2xl font-semibold font-plex mt-12 w-full md:w-2/3">
-          I mostly focus on Web-Development and LLMs, but from time to time I
-          happen to do some other stuff too.
+          I mostly focus on Web-Development and LLMs, but from{" "}
+          <Link href="/projects/gith" className="underline decoration-2">
+            time
+          </Link>{" "}
+          <Link
+            href="/projects/starship-switcher"
+            className="underline decoration-2"
+          >
+            to
+          </Link>{" "}
+          <Link href="/projects/n-recipe" className="underline decoration-2">
+            time
+          </Link>{" "}
+          I happen to do some other stuff too.
         </p>
         <p className="text-xl md:text-2xl font-semibold font-plex mt-12 w-full md:w-2/3">
           I&apos;m currently pursuing my Bachelor&apos;s degree in Computer
@@ -30,7 +42,7 @@ const InfoSection = () => {
           <Link
             href="https://www.tum.de"
             target="_blank"
-            className="underline text-crust"
+            className="underline text-crust decoration-2"
           >
             TUM
           </Link>
@@ -38,11 +50,11 @@ const InfoSection = () => {
         </p>
         <p className="text-xl md:text-2xl font-semibold font-plex mt-12 w-full md:w-2/3">
           In my free time, I work on some of my own{" "}
-          <Link href="/projects" className="underline text-crust">
+          <Link href="/projects" className="underline text-crust decoration-2">
             Projects
           </Link>{" "}
           or I write articles for my{" "}
-          <Link href="/blog" className="underline text-crust">
+          <Link href="/blog" className="underline text-crust decoration-2">
             Blog
           </Link>
           .

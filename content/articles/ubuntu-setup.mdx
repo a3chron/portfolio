@@ -165,6 +165,8 @@ I have a older articel on [Starship](/blog/starship) which covers installation a
 with a few versions of my configuration file at the end.  
 You can copy the one you like most, and configure it further if you want.
 
+You can also get my latest configs and themes at my  [starship theme switcher](/projects/starship-switcher).
+
 
 ## Conky
 
@@ -175,16 +177,17 @@ so I'll be fixing that, and probably adding some more widgets.
 If you want to try it out yourself, I installed it via `sudo apt-get install conky-all`,
 and you can get quite decent configs at [gnome-look](https://www.gnome-look.org/browse?cat=124).
 
-Otherwise, I'll be updating this as always when I'm done.
+Otherwise, I'll be updating this as always when (/if) I'll finish it.
 
 
 ## Custom window close buttons
 
-For this one you'll need to me just a little bit more tech-savy.  
+For this one you'll need to be just a little bit more tech-savy.  
 You will need to directly customize your current `gtk.css` file.
 
 If you followed this tutorial, the gtk file at `~/.config/gtk4.0/gtk.css` 
-should link to your themes `gtk.css` file, so you'll need to edit the themes `gtk.css` file.
+should link to your themes `gtk.css` file, so you'll need to edit the themes `gtk.css` file. 
+(probably somewhere at `~/.themes/xy)
 
 > [WARNING] This is "beta"
 > I am planning on turning this one into an extension, so it is easier and safer to use. I'll link it here when I'm done.
@@ -195,7 +198,8 @@ should link to your themes `gtk.css` file, so you'll need to edit the themes `gt
 > I'm working on it, but if you want to take the risk, feel free to take a look at the changes I think are neccassary for custom window buttons.  
 > I would suggest making sure you can somehow revert it to the original version.
 > 
-> In the worst case, you should always be able to reinstall the whole theme.
+> In the worst case, all that can happen is, that you have to reinstall the whole theme.
+> Don't edit your system `gtk.css` (if you don't know what your doing), but only the one of Themes you downloaded.
 
 To apply these styles to Flathub apps too, you'll need to give all apps access to these directories:
 
