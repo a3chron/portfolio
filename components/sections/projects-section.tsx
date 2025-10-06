@@ -5,11 +5,9 @@ import { allProjects } from "contentlayer/generated";
 import Image from "next/image";
 
 const ProjectsSection = () => {
-  const featured = allProjects.find((project) => project.slug === "gith")!;
-  const top2 = allProjects.find((project) => project.slug === "portfolio")!;
-  const top3 = allProjects.find(
-    (project) => project.slug === "nextjs-auth-template",
-  )!;
+  const featured = allProjects.find((project) => project.slug === "n-recipe")!;
+  const top2 = allProjects.find((project) => project.slug === "gith")!;
+  const top3 = allProjects.find((project) => project.slug === "portfolio")!;
 
   const featuredProjects = [featured, top2, top3].filter((p) => p);
 
