@@ -136,8 +136,8 @@ export async function GET() {
     // Return fallback data
     return NextResponse.json({
       stats: {
-        repos: 20,
-        stars: 6,
+        repos: 23,
+        stars: 9,
         forks: 0,
         followers: 8,
         topLanguages: 5,
@@ -147,7 +147,7 @@ export async function GET() {
           name: "Gith",
           description: "A Terminal UI git helper",
           html_url: "https://github.com/a3chron/gith",
-          stargazers_count: 6,
+          stargazers_count: 8,
           forks_count: 0,
           language: "Go",
         },
