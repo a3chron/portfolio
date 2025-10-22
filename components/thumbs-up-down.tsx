@@ -8,20 +8,20 @@ const ThumbsUpDown = ({ articleSlug }: { articleSlug: string }) => {
   const [dislikes, setDislikes] = useState(0);
   const [alreadyVoted, setAlreadyVoted] = useState(true);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(`/api/get-likes/${articleSlug}`);
-      if (!response.ok) {
-        console.error("failed to fetch likes");
-      } else {
-        const data = await response.json();
-        setLikes(data.likes);
-        setDislikes(data.dislikes);
-      }
-    };
+  const fetchData = async () => {
+    const response = await fetch(`/api/get-likes/${articleSlug}`);
+    if (!response.ok) {
+      console.error("failed to fetch likes");
+    } else {
+      const data = await response.json();
+      setLikes(data.likes);
+      setDislikes(data.dislikes);
+    }
+  };
 
+  useEffect(() => {
     fetchData();
-  });
+  }, []);
 
   useEffect(() => {
     const votedStorage = localStorage.getItem(`voted-${articleSlug}`);
@@ -33,18 +33,18 @@ const ThumbsUpDown = ({ articleSlug }: { articleSlug: string }) => {
   const like = async () => {
     if (!alreadyVoted) {
       setAlreadyVoted(true);
-      setLikes((prevNumber) => prevNumber + 1);
       await fetch(`/api/like/${articleSlug}`);
       localStorage.setItem(`voted-${articleSlug}`, "true");
+      fetchData();
     }
   };
 
   const dislike = async () => {
     if (!alreadyVoted) {
       setAlreadyVoted(true);
-      setDislikes((prevNumber) => prevNumber + 1);
       await fetch(`/api/dislike/${articleSlug}`);
       localStorage.setItem(`voted-${articleSlug}`, "true");
+      fetchData();
     }
   };
 
