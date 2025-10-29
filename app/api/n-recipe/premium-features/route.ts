@@ -13,8 +13,8 @@ const PREMIUM_FEATURES = {
     "New category: drinks",
   ],
   immediate: [
+    "Finish Translations for free & premium",
     "Tighten security for export/import (only allowed format (strip rest to ensure future compatibility), escaping if not automatically done) *free version too*",
-    "Improve light mode colors *free version too*",
     "Sharing with app (imports not working)",
     "Hide Timer by default, add toggle icon",
     "Export recipes as PDF",
