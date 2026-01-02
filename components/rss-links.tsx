@@ -23,37 +23,39 @@ export default function RSSLinks() {
   };
 
   return (
-    <div
-      title="Click to copy rss link"
-      onClick={() => setIsOpen((prevBool) => !prevBool)}
-      className="hidden md:block absolute z-10 right-2 bottom-14 rounded-3xl bg-crust outline-2 outline-offset-2 outline-transparent hover:outline-crust duration-300 text-text p-2"
-    >
+    <div className="absolute hidden md:block z-10 right-2 bottom-14 overflow-hidden pt-9">
       <div
-        className={`absolute flex -top-8 text-crust right-3 cursor-pointer duration-500 ${
-          !isOpen && "translate-x-full opacity-0 transition-transform"
-        }`}
+        title="Click to copy rss link"
+        onClick={() => setIsOpen((prevBool) => !prevBool)}
+        className="rounded-3xl bg-crust text-text p-2"
       >
-        <span className="text-xs -translate-y-2">Click to copy url</span>
-        <X className="shrink-0" />
+        <div
+          className={`absolute flex top-1 text-crust right-3 cursor-pointer duration-500 ${
+            !isOpen && "translate-x-full opacity-0 transition-transform"
+          }`}
+        >
+          <span className="text-xs -translate-y-2">Click to copy url</span>
+          <X className="shrink-0" />
+        </div>
+        {isOpen ? (
+          <ul className="space-y-2 p-2 px-4">
+            {links.map((link) => (
+              <li
+                onClick={() => copyToClipboard(link.url)}
+                key={link.url}
+                className="cursor-pointer flex items-center gap-2"
+              >
+                <link.icon size={12} />
+                {link.name}
+              </li>
+            ))}
+          </ul>
+        ) : copied ? (
+          <Check />
+        ) : (
+          <RssIcon />
+        )}
       </div>
-      {isOpen ? (
-        <ul className="space-y-2 p-2 px-4">
-          {links.map((link) => (
-            <li
-              onClick={() => copyToClipboard(link.url)}
-              key={link.url}
-              className="hover:scale-105 cursor-pointer flex items-center gap-2"
-            >
-              <link.icon size={12} />
-              {link.name}
-            </li>
-          ))}
-        </ul>
-      ) : copied ? (
-        <Check />
-      ) : (
-        <RssIcon />
-      )}
     </div>
   );
 }
