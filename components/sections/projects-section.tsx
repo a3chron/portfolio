@@ -27,7 +27,7 @@ const ProjectsSection = () => {
             </h1>
             <p className="text-xl md:text-2xl font-semibold mt-12 w-full md:w-2/3">
               I have several little projects, few of which are not work in
-              progress, but nevertheless you can have a look at them:
+              progress, but nevertheless worth a look:
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">

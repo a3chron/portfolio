@@ -18,7 +18,9 @@
   --color-warning: #fab387;
 
   --font-family-display: var(--font-calsans);
-  --font-family-plex: "IBM Plex", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-family-plex:
+    "IBM Plex", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
 }
 
 @layer components {
@@ -26,7 +28,7 @@
   .prose code::after {
     content: "";
   }
-  
+
   .prose-quoteless blockquote p:first-of-type::before,
   .prose-quoteless blockquote p:first-of-type::after {
     content: none;
@@ -60,7 +62,7 @@ body {
   display: none;
   @apply group-hover/heading:block;
   & [subheading]:hover {
-    display:block;
+    display: block;
   }
 }
 

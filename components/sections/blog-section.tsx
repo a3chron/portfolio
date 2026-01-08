@@ -50,7 +50,7 @@ const BlogSection = () => {
               </Link>
             </h1>
             <p className="text-xl md:text-2xl font-semibold mt-12 w-full md:w-2/3">
-              As I am exploring nerdy stuff, I collect some of my journey in a
+              As I am exploring random stuff, I collect some of my journey in a
               more or less readable format here. <br />I also write about Gnome
               customization, feel free to check that out.
             </p>
