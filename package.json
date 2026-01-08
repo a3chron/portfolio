@@ -7,7 +7,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "format": "pnpm rome format --write .",
+    "format": "biome format --changed --write .",
     "lint": "next lint"
   },
   "dependencies": {
@@ -40,7 +40,6 @@
     "eslint-config-next": "15.4.1",
     "postcss-import": "16.1.1",
     "postcss-nesting": "13.0.2",
-    "rome": "12.1.3",
     "tailwindcss": "4.1.11",
     "typescript": "5.8.3"
   },

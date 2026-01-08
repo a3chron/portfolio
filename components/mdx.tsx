@@ -111,7 +111,10 @@ export function Mdx({ code, page }: MdxProps) {
       className,
       children,
       ...props
-    }: { className?: string; children: React.ReactNode }) => {
+    }: {
+      className?: string;
+      children: React.ReactNode;
+    }) => {
       const typeConfigs = {
         info: {
           prefix: "[INFO]",

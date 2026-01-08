@@ -30,7 +30,9 @@ const sectionNameMap: Record<number, string> = {
 
 export default function SnapScrollContainer({
   children,
-}: { children: React.ReactNode }) {
+}: {
+  children: React.ReactNode;
+}) {
   const [activeSection, setActiveSection] = React.useState(0);
   const [isScrolling, setIsScrolling] = React.useState(false);
   const sections = Array.isArray(children) ? children : [children];

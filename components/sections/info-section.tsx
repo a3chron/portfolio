@@ -9,8 +9,8 @@ const InfoSection = () => {
           #1 About Me
         </h1>
         <h1 className="text-2xl md:text-4xl font-bold space-y-4 md:space-y-0">
-          Hi, my name is Kurt Schambach. <br />
-          I am a Software Developer working at{" "}
+          Hi, my name is Kurt Schambach. <br />I am a Software Developer working
+          at{" "}
           <Link
             target="_blank"
             href="https://www.titanom.com"
