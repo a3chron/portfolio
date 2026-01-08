@@ -24,11 +24,11 @@ To get hot-reload on content changes too, run:
 pnpm contentlayer2 dev
 ```
 
-create a .env with the following information:
+create a `.env.local` with the following information:
 
 ```
 SUPABASE_URL=your-db-url
-SUPABASE_API_KEY=your-secret-key
+SUPABASE_ANON_KEY=your-secret-key
 ```
 
 ## Cloning / Forking
@@ -37,3 +37,10 @@ Please remove all of my personal information (projects, images, articles, etc.) 
 
 <p align="center"><a href="https://github.com/a3chron/portfolio/blob/main/LICENSE"><img alt="GitHub License" src="https://img.shields.io/github/license/a3chron/portfolio?style=for-the-badge&labelColor=363a4f&color=b7bdf8">
 </a></p>
+
+## TODOs
+
+Todos for me:
+
+- clean up
+- use biome for linting as well? remove lint

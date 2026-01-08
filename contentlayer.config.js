@@ -37,6 +37,9 @@ export const Project = defineDocumentType(() => ({
     date: {
       type: "date",
     },
+    archived: {
+      type: "string",
+    },
     image: {
       type: "string",
     },
