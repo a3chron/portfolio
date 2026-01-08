@@ -1,0 +1,47 @@
+---
+title: Switch to NixOS
+description: Had enough of recreating my setup every time my laptop broke
+topic: Customization
+date: "2026-01-08"
+published: true
+---
+
+# I switched to NixOS (👾🥳)
+
+I recently switched to NixOS, mostly because I did not want to spend 
+another time recreating my entire setup if my laptop broke again.
+(Which happenes to be expected at least every few months)  
+
+The setup usually took a few hours, even with the 
+[customization guide](/blog/ubuntu-setup) I wrote for the basics,
+and some things I always had not backed up anywhere or did not remember, so they were eventually lost.
+
+And I know, sure, I could have used dotfiles and all kinds of stuff to still manage that a little better, 
+and I tried, but it was just to much time & energy for me, to keep everything updated, 
+every time I updated a small file somewhere, to remember to also stage the changes of this exact file,
+as of course all the config files were not in the same directory.
+
+Now with NixOS, this all works better. Everything lives in `/etc/nixos`, all my apps, packages, configs, etc. 
+The random config I totally forgot and had no time to add to my dotfiles will be just added the next time 
+I change anything.
+
+I already love it, and not just because of that. For me, this is the first time my system feels quite "clean",
+even a few weeks after setting everything up.  
+There are no hidden or forgotten installed packages, not old deprecated stuff that did somehow not get fully removed.
+Quite a good feeling.
+
+---
+
+I'm of course working further on moving some of my old configs into the nix space,
+but most of it is [already there](https://github.com/a3chron/nix-config), migrated and ready for my laptop dying (please don't).
+
+Moving was actually benefitial in other parts too, I started learning vim motions, and checked out nvim,
+might switch after I get better in the motions.  
+I am considering switching from fish to zsh or similar, just to have a POSIX compliant shell,
+switched from alacritty to ghostty (not too sure about that), as alacritty refused to correctly display my custom window button menu.
+
+> Little note to alacritty & ghostty, the startup time for alacritty is *noticeable* quicker than for ghostty, 
+> but I might get used to it, and I'm quite happy about a few things at ghostty, 
+> for example the great animation (`ghostty +boo`), we need more of that :)
+
+All in all, let's see how it goes
