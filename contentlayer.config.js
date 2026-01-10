@@ -52,6 +52,9 @@ export const Project = defineDocumentType(() => ({
     repo: {
       type: "string",
     },
+    active: {
+      type: "boolean",
+    },
   },
   computedFields,
 }));
