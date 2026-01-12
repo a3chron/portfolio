@@ -23,18 +23,18 @@ interface RepoData {
 
 const GithubSection = () => {
   const [stats, setStats] = useState<GitHubStats>({
-    repos: 20,
-    stars: 6,
+    repos: 27,
+    stars: 12,
     forks: 0,
     followers: 8,
-    topLanguages: 5,
+    topLanguages: 7,
   });
   const [featuredRepos, setFeaturedRepos] = useState<RepoData[]>([
     {
       name: "Gith",
       description: "A Terminal UI git helper",
       html_url: "https://github.com/a3chron/gith",
-      stargazers_count: 6,
+      stargazers_count: 11,
       forks_count: 0,
     },
     {

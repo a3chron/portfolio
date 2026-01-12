@@ -53,7 +53,6 @@ async function fetchGitHubRepos(): Promise<GitHubRepo[]> {
       {
         headers: {
           Accept: "application/vnd.github.v3+json",
-          // Add token if you have one: 'Authorization': `token ${process.env.GITHUB_TOKEN}`,
         },
         next: { revalidate: 3600 },
       },
@@ -136,8 +135,8 @@ export async function GET() {
     // Return fallback data
     return NextResponse.json({
       stats: {
-        repos: 23,
-        stars: 9,
+        repos: 27,
+        stars: 12,
         forks: 0,
         followers: 8,
         topLanguages: 5,
@@ -147,7 +146,7 @@ export async function GET() {
           name: "Gith",
           description: "A Terminal UI git helper",
           html_url: "https://github.com/a3chron/gith",
-          stargazers_count: 8,
+          stargazers_count: 11,
           forks_count: 0,
           language: "Go",
         },
