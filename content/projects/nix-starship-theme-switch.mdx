@@ -1,43 +1,94 @@
 ---
 title: Nix Starship Themes
 description: A commandline tool to easily switch between predefined starship configs for NixOS
-repo: starship-theme-switcher
+gist: 2b7479cb3a256a9590d251c5e66b663a
 date: "2026-01-05"
 published: true
 active: true
 ---
 
-> [WARNING] Not actively maintained
-> I am not actively maintaining this project anymore,
-> as I switched to nixOS. I made an updated version for nix,
-> which is more efficient by using symlinks instead of copies as well.
 
-> I kept the old version online for anyone not using nix, 
-> but I would suggest - if you have the time - 
-> to just take the script from the new version, 
-> which has little improvements, and maybe newer themes.
-> Doesn't take much time to set it all up.
+# Setup of the Starship theme switcher
 
-[New nix starship-theme switcher](https://gist.github.com/a3chron/2b7479cb3a256a9590d251c5e66b663a)
+You can get my latest catppucin mocha starship-configs (blue-ish gradient, green & red) at my [nix-config repo](https://github.com/a3chron/nix-config/tree/main/home/starship-themes), or just use your own ones.
+If using yours make sure to adjust the names of the themes.
 
----
+<br />
+<table>
+  <tbody>
+  <tr>
+    <td><img src="https://raw.githubusercontent.com/a3chron/starship-theme-switcher/refs/heads/main/assets/green.png" alt="green" /></td>
+    <td><img src="https://raw.githubusercontent.com/a3chron/starship-theme-switcher/refs/heads/main/assets/blue.png" alt="blue" /></td>
+    <td><img src="https://raw.githubusercontent.com/a3chron/starship-theme-switcher/refs/heads/main/assets/red.png" alt="red" /></td>
+  </tr>
+  </tbody>
+</table>
 
-The starship theme switcher is basically a simple setup to easily switch starship themes / profiles. (obv customizable, the repo is just a starting point)
+> [INFO]
+> Little explanation, what this does is basically just two things:
+> 1. you have all your "themes" as seperate starship config files in a folder under `/etc/nixos`
+> 2. the small script just symlinks the starship config (`~/.config/starship.toml`) to either one of them
 
-> [INFO] 
-> starship-theme only switches the starship config. 
-> It can be part in bigger scripts to change the entire system theme if needed. 
-> For the borders, the gnome extension Rounded Window Corners Reborn is used. 
-> The quick-settings color is set manually or with an other command too, in the settings.
+Put all themed starship configs into the directory `/etc/nixos/home/starship-themes`:
+```
+/etc/nixos/home
+├── username.nix
+└── starship-themes
+    ├── red.toml
+    ├── blue.toml
+    └── green.toml
+```
 
-You can use following command to switch predifined themes:
+## Setup for homemanger
 
-`starship-theme blue`
+In your `/etc/nixos/home/username.nix` add the following to enable starship if not already done (here for fish & bash, just use your shell):
 
-Maybe a lil bit inefficient, it just has a themes folder in ./config, with all starship configs, and copies the selected theme to the starship config location.
+```nix
+programs.starship = {
+  enable = true;
 
-<div className="flex flex-col gap-6 mt-6">
-    <img src="https://raw.githubusercontent.com/a3chron/starship-theme-switcher/refs/heads/main/assets/green.png" alt="Preview (also visible at the GitHub repo)" />
-    <img src="https://raw.githubusercontent.com/a3chron/starship-theme-switcher/refs/heads/main/assets/blue.png" />
-    <img src="https://raw.githubusercontent.com/a3chron/starship-theme-switcher/refs/heads/main/assets/red.png" />
-</div>
+  enableBashIntegration = true;
+  enableFishIntegration = true;
+};
+programs.fish.enable = true;
+programs.bash.enable = true;
+```
+
+To populate the starship config file:
+
+```nix
+# Create initial symlink (only runs if file doesn't exist)
+home.activation.setupStarshipTheme = config.lib.dag.entryAfter ["writeBoundary"] ''
+  if [ ! -e "$HOME/.config/starship.toml" ]; then
+    $DRY_RUN_CMD ln -s "/etc/nixos/home/starship-themes/blue.toml" "$HOME/.config/starship.toml"
+  fi
+'';
+```
+
+And at the end we'll have to add the script to switch themes (you can import it form an other file etc as well oc):
+
+```nix
+# User Packages
+home.packages = with pkgs; [
+  starship
+  
+  # your other packages
+
+  (pkgs.writeShellScriptBin "starship-theme" ''
+    THEME="$1"
+    THEMES="/etc/nixos/home/starship-themes"
+    ACTIVE="$HOME/.config/starship.toml"
+
+    if [[ ! "$THEME" =~ ^(red|blue|green)$ ]]; then
+      echo "Usage: starship-theme [red|blue|green]"
+      exit 1
+    fi
+
+    ln -sf "$THEMES/$THEME.toml" "$ACTIVE"
+    echo "✨ Starship theme switched to $THEME"
+  '')
+];
+```
+
+Now you just have to rebuild, and run `starship-theme red` for example  
+Have fun ;)

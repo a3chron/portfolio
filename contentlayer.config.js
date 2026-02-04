@@ -46,10 +46,13 @@ export const Project = defineDocumentType(() => ({
     url: {
       type: "string",
     },
-    appLogo: {
+    repo: {
       type: "string",
     },
-    repo: {
+    gist: {
+      type: "string",
+    },
+    appLogo: {
       type: "string",
     },
     active: {

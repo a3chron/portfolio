@@ -3,7 +3,7 @@ import { allProjects } from "contentlayer/generated";
 import { Mdx } from "@/components/mdx";
 import "@/style/mdx.css";
 import type { Metadata } from "next";
-import { Header } from "./header";
+import { ProjectHeader } from "./header";
 export const revalidate = 60;
 
 type Props = {
@@ -45,7 +45,7 @@ export default async function PostPage({ params }: Props) {
 
   return (
     <div className="bg-bg text-text">
-      <Header project={project} />
+      <ProjectHeader project={project} />
 
       <div className="group w-full md:w-[80dvw] max-w-5xl h-full bg-bg mx-auto mt-4">
         <article

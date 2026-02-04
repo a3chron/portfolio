@@ -1,19 +1,15 @@
+import { Project } from "@/.contentlayer/generated";
 import { ExternalLink, Github } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
-type Props = {
-  project: {
-    title: string;
-    description: string;
-    repo?: string;
-    url?: string;
-    image?: string;
-  };
+type HeaderProps = {
+  project: Project;
 };
 
-export const Header: React.FC<Props> = ({ project }) => {
-  const links: { label: "Repo" | "Live"; href: string }[] = [];
+export function ProjectHeader({ project }: HeaderProps) {
+  const links: { label: "Repo" | "Live" | "Gist"; href: string }[] = [];
+
   if (project.repo) {
     const repoLink = project.repo.includes("/")
       ? `https://github.com/${project.repo}`
@@ -23,6 +19,17 @@ export const Header: React.FC<Props> = ({ project }) => {
       href: repoLink,
     });
   }
+
+  if (project.gist) {
+    const gistLink = project.gist.includes("/")
+      ? `https://gist.github.com/${project.gist}`
+      : `https://gist.github.com/a3chron/${project.gist}`;
+    links.push({
+      label: "Gist",
+      href: gistLink,
+    });
+  }
+
   if (project.url) {
     links.push({
       label: "Live",
@@ -66,4 +73,4 @@ export const Header: React.FC<Props> = ({ project }) => {
       </div>
     </div>
   );
-};
+}
