@@ -1,7 +1,7 @@
 "use client";
 
-import { cn } from "@/util/utils";
 import React from "react";
+import { cn } from "@/util/utils";
 import Navigation from "./navigation";
 
 const classNameMap: Record<number, string> = {

@@ -1,8 +1,8 @@
+import { allProjects } from "contentlayer/generated";
+import { Code2, ExternalLink, Github } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { Block } from "../block";
-import { Code2, ExternalLink, Github } from "lucide-react";
-import { allProjects } from "contentlayer/generated";
-import Image from "next/image";
 
 const ProjectsSection = () => {
   const featured = allProjects.find((project) => project.slug === "n-recipe")!;

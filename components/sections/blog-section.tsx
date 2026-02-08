@@ -1,8 +1,8 @@
-import { Article, allArticles } from "contentlayer/generated";
-import Link from "next/link";
-import { Block } from "../block";
-import { getSortedArticlesbyDate } from "@/util/utils";
+import { type Article, allArticles } from "contentlayer/generated";
 import { Calendar } from "lucide-react";
+import Link from "next/link";
+import { getSortedArticlesbyDate } from "@/util/utils";
+import { Block } from "../block";
 
 function getTwoLatestArticles(articles: Article[]): Article[] {
   const sortedArticles = getSortedArticlesbyDate(articles);

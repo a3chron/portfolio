@@ -1,5 +1,5 @@
-import React from "react";
 import { allProjects } from "contentlayer/generated";
+import React from "react";
 import { Article } from "./article";
 
 export const revalidate = 60;

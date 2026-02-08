@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import Navigation from "@/components/navigation";
 import RSSLinks from "@/components/rss-links";
 

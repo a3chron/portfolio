@@ -1,7 +1,7 @@
-import { Project } from "@/.contentlayer/generated";
 import { ExternalLink, Github } from "lucide-react";
 import Link from "next/link";
 import React from "react";
+import type { Project } from "@/.contentlayer/generated";
 
 type HeaderProps = {
   project: Project;

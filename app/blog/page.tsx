@@ -1,6 +1,6 @@
 import { allArticles } from "contentlayer/generated";
-import { Article } from "./article";
 import Link from "next/link";
+import { Article } from "./article";
 
 export const revalidate = 60;
 

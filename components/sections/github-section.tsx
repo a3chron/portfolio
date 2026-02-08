@@ -1,9 +1,9 @@
 "use client";
 
 import { BookMarked, GitFork, Star, Users, Zap } from "lucide-react";
-import { Block } from "../block";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Block } from "../block";
 
 interface GitHubStats {
   repos: number;

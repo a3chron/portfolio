@@ -1,9 +1,9 @@
 "use client";
 
 import type { Project } from "contentlayer/generated";
-import Link from "next/link";
+import { Calendar, CircleDot, GitCommit, GitFork, Star } from "lucide-react";
 import Image from "next/image";
-import { CircleDot, GitFork, Star, GitCommit, Calendar } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 type Props = {

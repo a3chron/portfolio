@@ -1,7 +1,7 @@
-import * as React from "react";
+import { FlameIcon, InfoIcon, TriangleAlertIcon } from "lucide-react";
 import Image from "next/image";
 import { useMDXComponent } from "next-contentlayer2/hooks";
-import { FlameIcon, InfoIcon, TriangleAlertIcon } from "lucide-react";
+import * as React from "react";
 
 export function clsx(...args: (string | undefined)[]) {
   return args.filter(Boolean).join(" ");

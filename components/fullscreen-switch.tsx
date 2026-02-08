@@ -1,6 +1,6 @@
 "use client";
 
-import { Minimize, Maximize } from "lucide-react";
+import { Maximize, Minimize } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const FullScreenSwitch = () => {

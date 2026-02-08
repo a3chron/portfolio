@@ -1,5 +1,5 @@
+import type React from "react";
 import { cn } from "@/util/utils";
-import React from "react";
 
 export const Block = ({
   children,

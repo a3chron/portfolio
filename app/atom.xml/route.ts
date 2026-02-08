@@ -1,5 +1,5 @@
-import { Feed } from "feed";
 import { allArticles } from "contentlayer/generated";
+import { Feed } from "feed";
 import { FEED_CONFIG, getArticleUrl } from "@/lib/feed-config";
 import { markdownToHtml } from "@/lib/markdown-to-html";
 

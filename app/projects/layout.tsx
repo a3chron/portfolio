@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import Navigation from "@/components/navigation";
 
 export default function ProjectsLayout({

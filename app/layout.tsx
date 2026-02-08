@@ -1,8 +1,8 @@
 import "@/style/global.css";
-import { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
-import ToggleFavicon from "@/components/toggle-favicon";
+import type { Metadata } from "next";
 import GithubRepo from "@/components/github-repo";
+import ToggleFavicon from "@/components/toggle-favicon";
 
 export const metadata: Metadata = {
   title: {

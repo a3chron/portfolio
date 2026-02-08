@@ -1,6 +1,6 @@
 import { remark } from "remark";
-import remarkHtml from "remark-html";
 import remarkGfm from "remark-gfm";
+import remarkHtml from "remark-html";
 
 export async function markdownToHtml(mdxContent: string): Promise<string> {
   try {
