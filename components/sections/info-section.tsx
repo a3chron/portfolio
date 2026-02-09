@@ -22,13 +22,10 @@ const InfoSection = () => {
         </h1>
         <p className="text-xl md:text-2xl font-semibold font-plex mt-12 w-full md:w-2/3">
           I mostly focus on Web-Development and LLMs, but from{" "}
-          <Link href="/projects/gith" className="underline decoration-2">
+          <Link href="/projects/stellar" className="underline decoration-2">
             time
           </Link>{" "}
-          <Link
-            href="/projects/starship-switcher"
-            className="underline decoration-2"
-          >
+          <Link href="/projects/gith" className="underline decoration-2">
             to
           </Link>{" "}
           <Link href="/projects/n-recipe" className="underline decoration-2">

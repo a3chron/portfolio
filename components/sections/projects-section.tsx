@@ -6,7 +6,7 @@ import { Block } from "../block";
 
 const ProjectsSection = () => {
   const featured = allProjects.find((project) => project.slug === "n-recipe")!;
-  const top2 = allProjects.find((project) => project.slug === "gith")!;
+  const top2 = allProjects.find((project) => project.slug === "stellar")!;
   const top3 = allProjects.find((project) => project.slug === "portfolio")!;
 
   const featuredProjects = [featured, top2, top3].filter((p) => p);
@@ -100,7 +100,11 @@ function ProjectCard({
           </Link>
           {repo && (
             <Link
-              href={repo}
+              href={
+                repo.includes("/")
+                  ? `https://github.com/${repo}`
+                  : `https://github.com/a3chron/${repo}`
+              }
               target="_blank"
               className="flex items-center gap-1 text-teal hover:underline text-sm"
             >
