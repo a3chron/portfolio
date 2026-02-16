@@ -10,12 +10,12 @@ export const metadata: Metadata = {
     default: "a3chron",
   },
   description:
-    "Hi, my name is Kurt Schambach. I'm a Software Developer at Titanom Technologies, working on some of my own Projects in free time",
+    "Hi, my name is Kurt Schambach. I'm a Software Engineer at Titanom Technologies, working on some of my own Projects in free time",
   keywords: [
     "Kurt",
     "Schambach",
     "Kurt Schambach",
-    "Developer",
+    "Engineer",
     "Software",
     "Titanom Technologies",
     "Technologie",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "a3chron",
     description:
-      "Hi, my name is Kurt Schambach. I'm a Software Developer at Titanom Technologies, working on some of my own Projects in free time",
+      "Hi, my name is Kurt Schambach. I'm a Software Engineer at Titanom Technologies, working on some of my own Projects in free time",
     url: "https://a3chron.vercel.app/",
     emails: "kurt.schambach@gmail.com",
     siteName: "a3chron - Kurt Schambach - Portfolio",
