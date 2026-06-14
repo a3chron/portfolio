@@ -5,7 +5,9 @@ import Link from "next/link";
 import { Block } from "../block";
 
 const ProjectsSection = () => {
-  const featured = allProjects.find((project) => project.slug === "n-recipe")!;
+  const featured = allProjects.find(
+    (project) => project.slug === "kaeru-kitchen",
+  )!;
   const top2 = allProjects.find((project) => project.slug === "stellar")!;
   const top3 = allProjects.find((project) => project.slug === "portfolio")!;
 

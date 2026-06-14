@@ -28,7 +28,10 @@ const InfoSection = () => {
           <Link href="/projects/gith" className="underline decoration-2">
             to
           </Link>{" "}
-          <Link href="/projects/n-recipe" className="underline decoration-2">
+          <Link
+            href="/projects/kaeru-kitchen"
+            className="underline decoration-2"
+          >
             time
           </Link>{" "}
           I happen to do some other stuff too.

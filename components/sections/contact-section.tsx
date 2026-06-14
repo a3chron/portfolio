@@ -1,15 +1,24 @@
 "use client";
 
-import { ExternalLink, FilmIcon, GamepadIcon, Github, KeyboardIcon, Linkedin, LucideBellRing, Mail } from "lucide-react";
+import {
+  ExternalLink,
+  FilmIcon,
+  GamepadIcon,
+  Github,
+  KeyboardIcon,
+  Linkedin,
+  LucideBellRing,
+  Mail,
+} from "lucide-react";
 import Link from "next/link";
 import { Block } from "../block";
 
 type SocialType = {
-  icon: React.ReactNode,
-  href: string,
-  label: string,
-  desc: string,
-}
+  icon: React.ReactNode;
+  href: string;
+  label: string;
+  desc: string;
+};
 
 const ContactSection = () => {
   const socials: SocialType[] = [
@@ -41,7 +50,7 @@ const ContactSection = () => {
       icon: <GamepadIcon size={20} />,
       href: "https://www.chess.com/member/a3chron",
       label: "Chess.com",
-      desc: "For the chess people"
+      desc: "For the chess people",
     },
     /*{
       icon: <KeyboardIcon size={20} />,
