@@ -1,4 +1,10 @@
-import { FlameIcon, InfoIcon, TriangleAlertIcon } from "lucide-react";
+import {
+  InfoIcon,
+  LightbulbIcon,
+  MessageSquareWarningIcon,
+  OctagonAlertIcon,
+  TriangleAlertIcon,
+} from "lucide-react";
 import Image from "next/image";
 import { useMDXComponent } from "next-contentlayer2/hooks";
 import * as React from "react";
@@ -115,108 +121,100 @@ export function Mdx({ code, page }: MdxProps) {
       className?: string;
       children: React.ReactNode;
     }) => {
+      // GitHub-style alert types (`[!NOTE]`, `[!TIP]`, `[!IMPORTANT]`,
+      // `[!WARNING]`, `[!CAUTION]`). An optional custom title may follow the
+      // marker on the same line; otherwise the type's default label is shown.
       const typeConfigs = {
-        info: {
-          prefix: "[INFO]",
-          icon: <InfoIcon />,
+        note: {
+          label: "Note",
+          icon: <InfoIcon className="size-5 shrink-0" />,
           className:
-            "border-blue bg-blue/5 text-blue! selection:bg-blue! selection:text-black",
+            "border-blue bg-blue/5 text-blue! selection:bg-blue selection:text-black",
+        },
+        info: {
+          label: "Note",
+          icon: <InfoIcon className="size-5 shrink-0" />,
+          className:
+            "border-blue bg-blue/5 text-blue! selection:bg-blue selection:text-black",
+        },
+        tip: {
+          label: "Tip",
+          icon: <LightbulbIcon className="size-5 shrink-0" />,
+          className:
+            "border-green bg-green/5 text-green! selection:bg-green selection:text-black",
+        },
+        important: {
+          label: "Important",
+          icon: <MessageSquareWarningIcon className="size-5 shrink-0" />,
+          className:
+            "border-mauve bg-mauve/5 text-mauve! selection:bg-mauve selection:text-black",
         },
         warning: {
-          prefix: "[WARNING]",
-          icon: <TriangleAlertIcon />,
+          label: "Warning",
+          icon: <TriangleAlertIcon className="size-5 shrink-0" />,
           className:
             "border-yellow bg-yellow/5 text-yellow! selection:bg-yellow selection:text-black",
         },
-        new: {
-          prefix: "[NEW]",
-          icon: <FlameIcon />,
+        caution: {
+          label: "Caution",
+          icon: <OctagonAlertIcon className="size-5 shrink-0" />,
           className:
-            "border-mauve bg-mauve/5 text-mauve! selection:bg-mauve! selection:text-black",
+            "border-error bg-error/5 text-error! selection:bg-error selection:text-black",
         },
       };
 
       type BlockquoteType = keyof typeof typeConfigs;
 
-      const extractTypeInfo = (children: React.ReactNode) => {
-        const childrenArray = children as React.ReactNode[];
-        if (!Array.isArray(childrenArray) || !childrenArray[1]) {
-          return { type: "default", title: "", content: children };
-        }
+      // The marker lives at the start of the first text node of the first
+      // paragraph. Matching only that text node (rather than requiring the
+      // whole paragraph to be a plain string) means inline elements like
+      // links or bold text in the callout body are preserved.
+      const markerRegex = /^\[!(\w+)\][^\S\n]*([^\n]*)\n?/;
 
-        const secondChild = childrenArray[1];
-        if (
-          !React.isValidElement(secondChild) ||
-          typeof (secondChild.props as any)?.children !== "string"
-        ) {
-          return { type: "default", title: "", content: children };
-        }
+      let type: BlockquoteType | "default" = "default";
+      let title = "";
+      let markerHandled = false;
 
-        const childString = (secondChild.props as any).children as string;
-        for (const [typeName, config] of Object.entries(typeConfigs)) {
-          if (childString.startsWith(config.prefix)) {
-            const lines = childString.split("\n");
-            const title = lines[0].replace(config.prefix, "").trim();
-            const remainingContent = lines.slice(1).join("\n");
+      const content = React.Children.toArray(children)
+        .map((child) => {
+          if (markerHandled || !React.isValidElement(child)) return child;
 
-            // Only create new child if there's actual content
-            const content = [];
-            if (remainingContent.trim()) {
-              const newChild = React.cloneElement(
-                secondChild,
-                {},
-                remainingContent,
-              );
-              content.push(newChild);
-            }
-            content.push(...childrenArray.slice(2));
+          const para = child as React.ReactElement<{
+            children?: React.ReactNode;
+          }>;
+          const paraChildren = React.Children.toArray(para.props.children);
+          const first = paraChildren[0];
+          if (typeof first !== "string") return child;
 
-            return {
-              type: typeName as keyof typeof typeConfigs,
-              title,
-              content,
-            };
-          }
-        }
-        return { type: "default", title: "", content: children };
-      };
+          const match = first.match(markerRegex);
+          if (!match) return child;
 
-      const { type, title, content } = extractTypeInfo(children);
+          const typeKey = match[1].toLowerCase();
+          if (!(typeKey in typeConfigs)) return child;
 
-      const processContent = (content: React.ReactNode) => {
-        if (!Array.isArray(content)) return content;
+          markerHandled = true;
+          type = typeKey as BlockquoteType;
+          title = match[2].trim();
 
-        const contentWithKeys = content
-          .map((child, idx) =>
-            React.isValidElement(child)
-              ? React.cloneElement(child, { key: idx })
-              : child,
-          )
-          .filter((child) => {
-            if (React.isValidElement(child)) {
-              const props = child.props as any;
-              if (
-                props?.children === "" ||
-                (typeof props?.children === "string" &&
-                  props.children.trim() === "")
-              ) {
-                return false;
-              }
-            }
-            if (typeof child === "string") {
-              return child.trim() !== "";
-            }
-            return child != null;
-          });
+          const remainder = first.slice(match[0].length);
+          const rebuilt = [remainder, ...paraChildren.slice(1)].filter(
+            (c) => !(typeof c === "string" && c.trim() === ""),
+          );
 
-        return contentWithKeys.length === 0 ? undefined : contentWithKeys;
-      };
+          return rebuilt.length > 0
+            ? React.cloneElement(para, {}, ...rebuilt)
+            : null;
+        })
+        .filter((child) => child != null);
 
-      const processedContent = processContent(content);
+      // Read through an explicitly-typed const: control-flow analysis would
+      // otherwise narrow `type` to its `"default"` initializer at the JSX
+      // reads below, since the reassignment happens inside the map closure.
+      const activeType = type as BlockquoteType | "default";
 
       const getTypeClassName = () => {
-        if (type !== "default" && type in typeConfigs) {
-          return typeConfigs[type as BlockquoteType].className;
+        if (activeType !== "default") {
+          return typeConfigs[activeType].className;
         }
         return page === "blog"
           ? "border-sapphire bg-sapphire/5 text-sapphire selection:bg-sapphire selection:text-black"
@@ -232,13 +230,13 @@ export function Mdx({ code, page }: MdxProps) {
           )}
           {...props}
         >
-          {type !== "default" && (
-            <span className="flex gap-2 items-center">
-              {typeConfigs[type as BlockquoteType].icon}
-              {title}
+          {activeType !== "default" && (
+            <span className="flex gap-2 items-center font-semibold">
+              {typeConfigs[activeType].icon}
+              {title || typeConfigs[activeType].label}
             </span>
           )}
-          {processedContent}
+          {content}
         </blockquote>
       );
     },
