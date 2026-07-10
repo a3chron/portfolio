@@ -1,15 +1,23 @@
-import { createClient } from "@supabase/supabase-js";
 import { NextResponse } from "next/server";
+import {
+  ensureArticleRow,
+  getSupabaseAdmin,
+  isPublishedArticleSlug,
+  slugFromPath,
+} from "@/lib/supabase";
 
 export async function GET(request: Request) {
   try {
     const { pathname } = new URL(request.url);
-    const slug = pathname.split("/").pop();
+    const slug = slugFromPath(pathname);
 
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+    if (!isPublishedArticleSlug(slug)) {
+      return NextResponse.json({ msg: "unknown article" }, { status: 404 });
+    }
 
-    if (!(supabaseUrl && anonKey)) {
+    const supabase = getSupabaseAdmin();
+
+    if (!supabase) {
       console.error("failed to load env supabase variables");
       return NextResponse.json(
         { msg: "failed to load env variables" },
@@ -17,7 +25,7 @@ export async function GET(request: Request) {
       );
     }
 
-    const supabase = createClient(supabaseUrl, anonKey);
+    await ensureArticleRow(supabase, slug);
 
     const { data, error } = await supabase
       .from("articles")

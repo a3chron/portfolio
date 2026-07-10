@@ -1,14 +1,21 @@
-import { createClient } from "@supabase/supabase-js";
 import { NextResponse } from "next/server";
+import {
+  getSupabaseAdmin,
+  isPublishedArticleSlug,
+  slugFromPath,
+} from "@/lib/supabase";
 
 export async function GET(request: Request) {
   const { pathname } = new URL(request.url);
-  const slug = pathname.split("/").pop();
+  const slug = slugFromPath(pathname);
 
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  if (!isPublishedArticleSlug(slug)) {
+    return NextResponse.json({ msg: "unknown article" }, { status: 404 });
+  }
 
-  if (!(supabaseUrl && anonKey)) {
+  const supabase = getSupabaseAdmin();
+
+  if (!supabase) {
     console.error("failed to load env supabase variables");
     return NextResponse.json(
       { msg: "failed to load env variables" },
@@ -16,33 +23,24 @@ export async function GET(request: Request) {
     );
   }
 
-  const supabase = createClient(supabaseUrl, anonKey);
-
-  const { data } = await supabase
-    .from("articles")
-    .select("dislikes")
-    .eq("article_id", slug)
-    .limit(1)
+  // Atomic upsert-and-increment in a single row-locked statement (see the
+  // increment_vote SQL function). Avoids the lost-update race of a
+  // read-then-write and creates the row on the fly when missing.
+  const { data, error } = await supabase
+    .rpc("increment_vote", { p_article_id: slug, p_vote_type: "dislike" })
     .single();
 
-  if (!data) {
-    return NextResponse.json(
-      { msg: "failed to retrieve previous dislikes" },
-      { status: 400 },
-    );
-  }
-
-  const { error } = await supabase
-    .from("articles")
-    .update({ dislikes: data.dislikes + 1 })
-    .eq("article_id", slug);
-
   if (error) {
+    console.error(error);
     return NextResponse.json(
       { msg: "failed to update dislikes" },
       { status: 400 },
     );
   }
 
-  return NextResponse.json({ msg: "updated dislikes" }, { status: 201 });
+  const counts = (data ?? {}) as { likes?: number; dislikes?: number };
+  return NextResponse.json(
+    { msg: "updated dislikes", ...counts },
+    { status: 201 },
+  );
 }
