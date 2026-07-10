@@ -35,6 +35,8 @@ begin
   end if;
 
   return query
-    select a.likes, a.dislikes from articles a where a.article_id = p_article_id;
+    select a.likes::int, a.dislikes::int
+    from articles a
+    where a.article_id = p_article_id;
 end;
 $$;
