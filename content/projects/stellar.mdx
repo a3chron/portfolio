@@ -79,7 +79,7 @@ and then switch to them using `stellar apply local/<your-theme>`.
 You can similarily copy one existing downloaded theme to the `stellar/local` folder, edit it, 
 and then switch to it using `stellar apply`.
 
-Because stellar is using a symlink to the currently selected config file, you get hot-reload as well.
+On Linux and macOS you get hot-reload (because stellar uses a symlink to the currently selected config file), on Windows it copies the config instead (Windows can't really do symlinks), so re-run `stellar apply` after editing a local config.
 
 ## Contributing
 
