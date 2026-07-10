@@ -15,6 +15,8 @@ export function getSortedArticlesbyDate(articles: Article[]) {
   return sortedArticles;
 }
 
-export function cn(...inputs: (string | undefined)[]): string {
+export function cn(
+  ...inputs: (string | false | null | undefined)[]
+): string {
   return inputs.filter(Boolean).join(" ");
 }
