@@ -38,16 +38,17 @@ export function slugFromPath(pathname: string): string | undefined {
   }
 }
 
-const publishedArticleSlugs = new Set(
-  allArticles.filter((article) => article.published).map((article) => article.slug),
+const knownArticleSlugs = new Set(
+  allArticles.map((article) => article.slug),
 );
 
 /**
- * Whether the given slug belongs to a real, published article. Used to guard the
- * likes endpoints so they can't be used to insert arbitrary rows.
+ * Whether the given slug belongs to a real article (published or draft — drafts
+ * are still viewable and votable via their banner page). Used to guard the likes
+ * endpoints so they can't be used to insert arbitrary rows.
  */
-export function isPublishedArticleSlug(slug: string | undefined): slug is string {
-  return slug !== undefined && publishedArticleSlugs.has(slug);
+export function isKnownArticleSlug(slug: string | undefined): slug is string {
+  return slug !== undefined && knownArticleSlugs.has(slug);
 }
 
 /**

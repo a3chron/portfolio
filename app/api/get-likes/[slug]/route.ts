@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import {
   ensureArticleRow,
   getSupabaseAdmin,
-  isPublishedArticleSlug,
+  isKnownArticleSlug,
   slugFromPath,
 } from "@/lib/supabase";
 
@@ -11,7 +11,7 @@ export async function GET(request: Request) {
     const { pathname } = new URL(request.url);
     const slug = slugFromPath(pathname);
 
-    if (!isPublishedArticleSlug(slug)) {
+    if (!isKnownArticleSlug(slug)) {
       return NextResponse.json({ msg: "unknown article" }, { status: 404 });
     }
 
