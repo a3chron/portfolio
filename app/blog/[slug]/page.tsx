@@ -33,13 +33,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: article.title,
       description: article.description,
       type: "article",
-      url: `https://a3chron.vercel.app/blog/${article.slug}`,
+      url: `https://a3chron.dev/blog/${article.slug}`,
       publishedTime: article.date,
       authors: ["Kurt Schambach"],
       section: article.topic,
       images: [
         {
-          url: "/https://a3chron.vercel.app/a3chron.png",
+          url: "/https://a3chron.dev/a3chron.png",
           width: 1200,
           height: 630,
           alt: article.title,

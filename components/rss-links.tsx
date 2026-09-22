@@ -4,9 +4,9 @@ import { Atom, Braces, Check, Rss, RssIcon, X } from "lucide-react";
 import { useState } from "react";
 
 const links = [
-  { name: "rss", url: "https://a3chron.vercel.app/feed.xml", icon: Rss },
-  { name: "atom", url: "https://a3chron.vercel.app/atom.xml", icon: Atom },
-  { name: "json", url: "https://a3chron.vercel.app/feed.json", icon: Braces },
+  { name: "rss", url: "https://a3chron.dev/feed.xml", icon: Rss },
+  { name: "atom", url: "https://a3chron.dev/atom.xml", icon: Atom },
+  { name: "json", url: "https://a3chron.dev/feed.json", icon: Braces },
 ];
 
 export default function RSSLinks() {

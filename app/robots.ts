@@ -5,6 +5,6 @@ export default function robots() {
       allow: "/",
       disallow: ["/api/"],
     },
-    sitemap: "https://a3chron.vercel.app/sitemap.xml",
+    sitemap: "https://a3chron.dev/sitemap.xml",
   };
 }

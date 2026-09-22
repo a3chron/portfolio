@@ -12,13 +12,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Blog | A3chron",
     description: "Read my latest thoughts on Ubuntu Customization and AI",
-    url: "https://a3chron.vercel.app/blog",
+    url: "https://a3chron.dev/blog",
   },
   alternates: {
     types: {
-      "application/rss+xml": "https://a3chron.vercel.app/feed.xml",
-      "application/atom+xml": "https://a3chron.vercel.app/atom.xml",
-      "application/feed+json": "https://a3chron.vercel.app/feed.json",
+      "application/rss+xml": "https://a3chron.dev/feed.xml",
+      "application/atom+xml": "https://a3chron.dev/atom.xml",
+      "application/feed+json": "https://a3chron.dev/feed.json",
     },
   },
 };

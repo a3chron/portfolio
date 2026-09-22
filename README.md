@@ -1,5 +1,5 @@
 <div align="center">
-    <a href="https://a3chron.vercel.app/"><h1 align="center">a3chron.vercel.app</h1></a>
+    <a href="https://a3chron.dev/"><h1 align="center">a3chron.dev</h1></a>
     
 My portfolio website, built with [Next.js](https://nextjs.org/) and [Tailwind CSS](https://tailwindcss.com/), deployed to [Vercel](https://vercel.com/).
 

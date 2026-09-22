@@ -2,7 +2,7 @@ import { allArticles, allProjects } from "contentlayer/generated";
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://a3chron.vercel.app";
+  const baseUrl = "https://a3chron.dev";
 
   const staticPages = [
     {
