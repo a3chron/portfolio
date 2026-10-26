@@ -39,14 +39,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       publishedTime: article.date,
       authors: ["Kurt Schambach"],
       section: article.topic,
-      images: [
-        {
-          url: "/a3chron.png",
-          width: 1200,
-          height: 630,
-          alt: article.title,
-        },
-      ],
+      // og:image comes from ./opengraph-image.tsx, generated per article.
     },
   };
 }
@@ -67,8 +60,35 @@ export default async function ArticlePage({ params }: Props) {
     notFound();
   }
 
+  const url = `https://a3chron.dev/blog/${article.slug}`;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: article.title,
+    description: article.description,
+    url,
+    mainEntityOfPage: url,
+    image: `${url}/opengraph-image`,
+    datePublished: article.date,
+    articleSection: article.topic,
+    inLanguage: "en",
+    author: {
+      "@type": "Person",
+      name: "Kurt Schambach",
+      alternateName: "a3chron",
+      url: "https://a3chron.dev",
+    },
+  };
+
   return (
     <div className="w-full h-[calc(100dvh-6rem)] bg-bg flex flex-col">
+      <script
+        type="application/ld+json"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structured data from our own MDX frontmatter
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
       <div className="sticky top-0 z-10 w-full h-16 flex flex-row items-center justify-start gap-4 md:gap-8 bg-crust text-text text-xl font-bold px-8">
         <Link
           href="/blog"
