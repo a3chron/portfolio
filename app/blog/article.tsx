@@ -6,6 +6,7 @@ type Props = {
 };
 
 import readingTime from "reading-time";
+import { formatDate } from "@/lib/format-date";
 
 const ColorHeader: React.FC<{ children: React.ReactNode; topic: string }> = ({
   children,
@@ -40,16 +41,17 @@ export const Article: React.FC<Props> = ({ article }) => {
   return (
     <Link
       href={`/blog/${article.slug}`}
-      className="group w-full sm:w-[396px] h-fit sm:h-72 bg-mantle rounded-2xl hover:no-underline"
+      // min-h rather than a fixed height: the grid stretches every card in a
+      // row to the tallest one, so a long title + description grows the row
+      // instead of overflowing the card.
+      className="group flex w-full sm:w-[396px] sm:min-h-72 bg-mantle rounded-2xl hover:no-underline"
     >
-      <article className="h-fit sm:h-72 w-full">
+      <article className="flex flex-col w-full">
         <ColorHeader topic={article.topic}>
           <span className="text-xs duration-300 text-inherit">
             {article.date ? (
               <time dateTime={new Date(article.date).toISOString()}>
-                {Intl.DateTimeFormat(undefined, { dateStyle: "medium" }).format(
-                  new Date(article.date),
-                )}
+                {formatDate(article.date)}
               </time>
             ) : (
               <span>SOON</span>
@@ -59,7 +61,7 @@ export const Article: React.FC<Props> = ({ article }) => {
             {readingTime(`${article.body.code}`).text}
           </span>
         </ColorHeader>
-        <div className="p-8 border-2 border-t-0 border-mantle h-fit sm:h-56 rounded-b-2xl">
+        <div className="flex-1 p-8 border-2 border-t-0 border-mantle rounded-b-2xl">
           <h2 className="z-20 text-xl font-medium duration-300 lg:text-3xl text-text font-display">
             {article.title}
           </h2>

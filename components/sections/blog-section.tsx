@@ -1,6 +1,7 @@
 import { type Article, allArticles } from "contentlayer/generated";
 import { Calendar } from "lucide-react";
 import Link from "next/link";
+import { formatDate } from "@/lib/format-date";
 import { getSortedArticlesbyDate } from "@/util/utils";
 import { Block } from "../block";
 
@@ -116,7 +117,7 @@ function ArticleCard({
       {date && (
         <div className="flex items-center gap-2 mt-4 text-sm text-gray-500">
           <Calendar size={14} />
-          <span>{new Date(date).toLocaleDateString()}</span>
+          <span>{formatDate(date)}</span>
         </div>
       )}
     </Link>
