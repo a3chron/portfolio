@@ -61,6 +61,13 @@ export const metadata: Metadata = {
   icons: {
     shortcut: "/a3-active.png",
   },
+  // Every page declares itself canonical ("./" resolves against each route's
+  // own path), so query-string variants Google crawls - ?_rsc=… prefetches,
+  // ?utm_… links - fold into the clean URL instead of being reported as
+  // "Duplicate without user-selected canonical".
+  alternates: {
+    canonical: "./",
+  },
   verification: {
     google: "waG0eqk7cOJVSMbB42gHQIR-bDsRmy5ABoQWNFI8UKQ",
   },

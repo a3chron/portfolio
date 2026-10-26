@@ -14,7 +14,10 @@ export const metadata: Metadata = {
     description: "Read my latest thoughts on Ubuntu Customization and AI",
     url: "https://a3chron.dev/blog",
   },
+  // Replaces the root layout's `alternates` wholesale, so the canonical has
+  // to be repeated here.
   alternates: {
+    canonical: "./",
     types: {
       "application/rss+xml": "https://a3chron.dev/feed.xml",
       "application/atom+xml": "https://a3chron.dev/atom.xml",
