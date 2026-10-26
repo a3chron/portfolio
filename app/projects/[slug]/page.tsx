@@ -20,6 +20,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (project) {
     return {
       title: project.title,
+      description: project.description,
+      // Unpublished entries (the Kaeru's Kitchen legal pages the app stores
+      // link to, drafts) stay reachable by URL but out of search.
+      ...(!project.published && { robots: { index: false, follow: true } }),
     };
   }
   return {

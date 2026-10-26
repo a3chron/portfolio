@@ -29,11 +29,13 @@ export const metadata: Metadata = {
     "NN",
   ],
   authors: [{ name: "Kurt Schambach" }],
+  // No title/description here: Next fills og:/twitter: title and description
+  // from each page's own when the openGraph object leaves them out. Setting
+  // them pinned every page without an openGraph of its own (all project
+  // pages) to the homepage's text, and the fixed url pointed them all at the
+  // homepage.
   openGraph: {
-    title: "a3chron",
-    description:
-      "Hi, my name is Kurt Schambach. I'm a Software Engineer at Titanom Technologies, working on some of my own Projects in free time",
-    url: "https://a3chron.dev/",
+    url: "./",
     emails: "kurt.schambach@gmail.com",
     siteName: "a3chron - Kurt Schambach - Portfolio",
     images: [
@@ -44,7 +46,7 @@ export const metadata: Metadata = {
         alt: "a3chron logo",
       },
     ],
-    locale: "de-DE",
+    locale: "en_US",
     type: "website",
   },
   robots: {

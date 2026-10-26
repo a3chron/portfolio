@@ -29,17 +29,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: article.description,
     keywords: [...article.topic.split(" "), "blog", "article"],
     authors: [{ name: "Kurt Schambach" }],
+    // Unpublished articles are still reachable by URL but stay out of search.
+    ...(!article.published && { robots: { index: false, follow: true } }),
     openGraph: {
       title: article.title,
       description: article.description,
       type: "article",
-      url: `https://a3chron.dev/blog/${article.slug}`,
+      url: "./",
       publishedTime: article.date,
       authors: ["Kurt Schambach"],
       section: article.topic,
       images: [
         {
-          url: "/https://a3chron.dev/a3chron.png",
+          url: "/a3chron.png",
           width: 1200,
           height: 630,
           alt: article.title,

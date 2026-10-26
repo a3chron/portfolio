@@ -19,4 +19,6 @@ export const metadata: Metadata = {
     template: "%s | Project",
     default: "Projects",
   },
+  description:
+    "Projects by Kurt Schambach (a3chron): command-line tools like stellar and gith, Android apps, a Nix setup and machine learning experiments.",
 };
