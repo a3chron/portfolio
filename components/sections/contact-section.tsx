@@ -71,13 +71,13 @@ const ContactSection = () => {
       <div className="w-dvw 2xl:w-384 h-fit min-h-dvh p-4 md:py-12 md:px-24 flex flex-col item-center justify-center">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div>
-            <h1 className="uppercase text-4xl md:text-6xl text-yellow bg-crust my-6 md:mb-16 w-fit p-1 px-2">
+            <h2 className="uppercase text-4xl md:text-6xl text-yellow bg-crust my-6 md:mb-16 w-fit p-1 px-2">
               #5 Contact
-            </h1>
+            </h2>
             <div>
-              <h1 className="text-2xl md:text-4xl font-bold flex items-center gap-3">
+              <p className="text-2xl md:text-4xl font-bold flex items-center gap-3">
                 Let&apos;s Get In Touch
-              </h1>
+              </p>
               <p className="text-xl md:text-2xl font-semibold mt-12 w-full md:w-2/3">
                 Have a question or want to work together? Feel free to reach out
                 :)

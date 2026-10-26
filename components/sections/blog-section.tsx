@@ -38,17 +38,17 @@ const BlogSection = () => {
   return (
     <Block className="bg-sapphire selection:text-sapphire">
       <div className="w-dvw 2xl:w-384 h-fit min-h-dvh p-4 md:py-12 md:px-24 flex flex-col item-center justify-center">
-        <h1 className="uppercase text-4xl md:text-6xl text-sapphire bg-crust my-6 md:mb-16 w-fit p-1 px-2">
+        <h2 className="uppercase text-4xl md:text-6xl text-sapphire bg-crust my-6 md:mb-16 w-fit p-1 px-2">
           #3 Blog
-        </h1>
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div className="col-span-2">
-            <h1 className="text-2xl md:text-4xl font-bold gap-3">
+            <p className="text-2xl md:text-4xl font-bold gap-3">
               Have a look on my{" "}
               <Link href="/blog" className="underline text-crust inline">
                 Blog
               </Link>
-            </h1>
+            </p>
             <p className="text-xl md:text-2xl font-semibold mt-12 w-full md:w-2/3">
               A few of my learnings regarding frameworks or programming
               languages I try out, updates to my setup, or other surely

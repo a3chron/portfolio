@@ -16,17 +16,17 @@ const ProjectsSection = () => {
   return (
     <Block className="bg-teal selection:text-teal">
       <div className="w-dvw 2xl:w-384 h-fit min-h-dvh p-4 md:py-12 md:px-24 flex flex-col item-center justify-center">
-        <h1 className="uppercase text-4xl md:text-6xl text-teal bg-crust my-6 md:mb-16 w-fit p-1 px-2">
+        <h2 className="uppercase text-4xl md:text-6xl text-teal bg-crust my-6 md:mb-16 w-fit p-1 px-2">
           #4 Projects
-        </h1>
+        </h2>
         <div className="grid grid-cols-1 gap-8">
           <div>
-            <h1 className="text-2xl md:text-4xl font-bold gap-3">
+            <p className="text-2xl md:text-4xl font-bold gap-3">
               Check out my{" "}
               <Link href="/projects" className="underline text-crust">
                 Projects
               </Link>
-            </h1>
+            </p>
             <p className="text-xl md:text-2xl font-semibold mt-12 w-full md:w-2/3">
               I have several little projects, few of which are not work in
               progress, but nevertheless worth a look:
