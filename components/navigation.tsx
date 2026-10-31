@@ -20,7 +20,7 @@ const Navigation = ({ className }: { className?: string }) => {
           href="/"
           className="mt-0 w-fit flex flex-col items-center justify-center text-text font-bold font-plex text-[1.7rem] whitespace-nowrap no-underline!"
         >
-          <span className="text-[1.2rem] leading-tight font-fraunces font-normal">
+          <span className="text-[1.35rem] leading-tight font-fraunces font-normal">
             Kurt Schambach
           </span>
           <span className="pl-6 leading-tight">a3chron</span>
@@ -36,7 +36,7 @@ const Navigation = ({ className }: { className?: string }) => {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="text-xl font-bold font-plex duration-500 text-text hover:text-hover"
+                    className="text-xl font-medium font-fraunces duration-500 text-text hover:text-hover"
                   >
                     {item.name}
                   </Link>
@@ -49,7 +49,7 @@ const Navigation = ({ className }: { className?: string }) => {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="text-xl font-bold font-plex duration-500 hover:underline decoration-2"
+                  className="text-xl font-medium font-fraunces duration-500 hover:underline decoration-2"
                 >
                   {item.name}
                 </Link>
