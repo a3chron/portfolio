@@ -25,7 +25,7 @@ const Navigation = ({ className }: { className?: string }) => {
           would trap the fixed mobile-menu overlay inside the header. */}
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 bg-header-glass backdrop-blur-2xl"
+        className="absolute inset-0 -z-10 bg-header-glass backdrop-blur-3xl"
       />
       <div className="max-w-384 w-full flex flex-row items-center justify-between p-4 md:px-12 lg:px-24 mx-auto">
         <Link
