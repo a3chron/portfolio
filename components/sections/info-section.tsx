@@ -9,7 +9,7 @@ const InfoSection = () => {
         <Link
           target="_blank"
           href="https://www.titanom.com"
-          className="italic hover:underline"
+          className="underline"
         >
           Titanom Solutions
         </Link>
@@ -17,13 +17,13 @@ const InfoSection = () => {
       </h1>
       <p className="text-xl md:text-2xl font-semibold mt-12">
         I mostly focus on Web-Development and LLMs, but from{" "}
-        <Link href="/projects/stellar" className="italic hover:underline">
+        <Link href="/projects/stellar" className="underline">
           time
         </Link>{" "}
-        <Link href="/projects/gith" className="italic hover:underline">
+        <Link href="/projects/gith" className="underline">
           to
         </Link>{" "}
-        <Link href="/projects/kaeru-kitchen" className="italic hover:underline">
+        <Link href="/projects/kaeru-kitchen" className="underline">
           time
         </Link>{" "}
         I happen to do some other stuff too.
@@ -34,7 +34,7 @@ const InfoSection = () => {
         <Link
           href="https://www.tum.de"
           target="_blank"
-          className="italic hover:underline"
+          className="underline"
         >
           TUM
         </Link>
@@ -42,11 +42,11 @@ const InfoSection = () => {
       </p>
       <p className="text-xl md:text-2xl font-semibold mt-12">
         In my free time, I work on some of my own{" "}
-        <Link href="/projects" className="italic hover:underline">
+        <Link href="/projects" className="underline">
           Projects
         </Link>{" "}
         or I write articles for my{" "}
-        <Link href="/blog" className="italic hover:underline">
+        <Link href="/blog" className="underline">
           Blog
         </Link>
         .
