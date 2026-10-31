@@ -8,7 +8,7 @@ export default function ProjectsLayout({
 }) {
   return (
     <div className="relative h-full max-h-dvh overflow-y-auto bg-bg">
-      <Navigation className="bg-header" />
+      <Navigation />
       {children}
     </div>
   );

@@ -14,7 +14,19 @@ const navigation = [
 const Navigation = ({ className }: { className?: string }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   return (
-    <nav className={cn("w-full h-24 border-b-2 border-faint-line", className)}>
+    // Sticky inside each page's scroll container, so the page scrolls behind it.
+    <nav
+      className={cn(
+        "sticky top-0 z-20 w-full h-24 border-b-2 border-faint-line",
+        className,
+      )}
+    >
+      {/* The glass sits on its own layer: a backdrop-filter on <nav> itself
+          would trap the fixed mobile-menu overlay inside the header. */}
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10 bg-header-glass backdrop-blur-2xl"
+      />
       <div className="max-w-384 w-full flex flex-row items-center justify-between p-4 md:px-12 lg:px-24 mx-auto">
         <Link
           href="/"

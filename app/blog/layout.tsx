@@ -33,9 +33,11 @@ export default function BlogLayout({
 }) {
   return (
     <div className="flex flex-col w-full h-full max-h-dvh overflow-hidden bg-bg">
-      <Navigation className="bg-header" />
       <RSSLinks />
-      <div className="h-[cal(100dvh-6rem)] overflow-y-auto">{children}</div>
+      <div className="h-full overflow-y-auto">
+        <Navigation />
+        {children}
+      </div>
     </div>
   );
 }

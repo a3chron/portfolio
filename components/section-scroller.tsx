@@ -8,11 +8,13 @@ const sectionNames = ["About Me", "GitHub", "Projects", "Blog", "Contact"];
 
 // Space kept above a section's content when the index scrolls to it.
 const SECTION_MARGIN = 64;
+// The sticky header (h-24) covers the top of the scroller.
+const HEADER_HEIGHT = 96;
 
 const sectionContents = (scroller: HTMLElement) =>
   Array.from(scroller.querySelectorAll("[data-section-content]"));
 
-// scrollTop that puts section `index`'s content SECTION_MARGIN below the top.
+// scrollTop that puts section `index`'s content SECTION_MARGIN below the header.
 const sectionStart = (scroller: HTMLElement, index: number) => {
   if (index === 0) return 0;
   const content = sectionContents(scroller)[index];
@@ -21,6 +23,7 @@ const sectionStart = (scroller: HTMLElement, index: number) => {
     scroller.scrollTop +
     content.getBoundingClientRect().top -
     scroller.getBoundingClientRect().top -
+    HEADER_HEIGHT -
     SECTION_MARGIN
   );
 };
@@ -47,7 +50,9 @@ export default function SectionScroller({
       return;
     }
     const line =
-      scroller.getBoundingClientRect().top + scroller.clientHeight / 3;
+      scroller.getBoundingClientRect().top +
+      HEADER_HEIGHT +
+      (scroller.clientHeight - HEADER_HEIGHT) / 3;
     let active = 0;
     sections.forEach((_, index) => {
       const el = document.getElementById(`section-${index}`);
@@ -67,12 +72,12 @@ export default function SectionScroller({
 
   return (
     <div className="h-dvh w-dvw">
-      <Navigation className="bg-header" />
       <div
         ref={scrollerRef}
         onScroll={updateActiveSection}
-        className="h-[calc(100dvh-96px)] w-dvw overflow-y-auto"
+        className="h-dvh w-dvw overflow-y-auto"
       >
+        <Navigation />
         {/* Section index: one evenly spaced line per section with its name
             beside it; the current one a soft taupe, the others cream. */}
         <nav

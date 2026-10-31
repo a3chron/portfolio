@@ -10,6 +10,9 @@
   --color-bg: #f0eee6;
   --color-mantle: #ebdbbc;
   --color-header: #e8e6dc;
+  /* The header as glass: 70% opaque, mixed so that over the cream bg it
+     still comes out as --color-header. */
+  --color-header-glass: rgb(229 227 216 / 0.7);
   --color-accent: #000000;
   --color-crust: #ebdbbc;
   /* Very dark warm brown for the inverted floating buttons (GitHub, RSS). */
