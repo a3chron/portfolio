@@ -1,9 +1,10 @@
 import { type Article, allArticles } from "contentlayer/generated";
 import { Calendar } from "lucide-react";
 import Link from "next/link";
+import { HoverItalic } from "@/components/hover-italic";
 import { formatDate } from "@/lib/format-date";
 import { getSortedArticlesbyDate } from "@/util/utils";
-import { Block } from "../block";
+import { Section } from "./section";
 
 function getTwoLatestArticles(articles: Article[]): Article[] {
   const sortedArticles = getSortedArticlesbyDate(articles);
@@ -37,62 +38,54 @@ const BlogSection = () => {
   });
 
   return (
-    <Block className="bg-sapphire selection:text-sapphire">
-      <div className="w-dvw 2xl:w-384 h-fit min-h-dvh p-4 md:py-12 md:px-24 flex flex-col item-center justify-center">
-        <h2 className="uppercase text-4xl md:text-6xl text-sapphire bg-crust my-6 md:mb-16 w-fit p-1 px-2">
-          #3 Blog
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          <div className="col-span-2">
-            <p className="text-2xl md:text-4xl font-bold gap-3">
-              Have a look on my{" "}
-              <Link href="/blog" className="underline text-crust inline">
-                Blog
-              </Link>
-            </p>
-            <p className="text-xl md:text-2xl font-semibold mt-12 w-full md:w-2/3">
-              A few of my learnings regarding frameworks or programming
-              languages I try out, updates to my setup, or other surely
-              interesting topics in a more or less readable format.
-            </p>
-            <div className="mt-12 flex flex-col gap-6 max-w-4xl">
-              {latestArticles.map((article) => (
-                <ArticleCard
-                  key={article.slug}
-                  title={article.title}
-                  description={
-                    article.description ||
-                    "Read more about this topic on my blog"
-                  }
-                  date={article.date}
-                  slug={article.slug}
-                />
-              ))}
-            </div>
-          </div>
-          <div className="hidden mt-12">
-            {" "}
-            {/**TODO: do sth with this, finish or remove */}
-            <h2 className="text-2xl font-bold mb-4">Categories</h2>
-            <div className="flex flex-col gap-4">
-              {categories.map((category) => (
-                <CategoryTag
-                  key={category.name}
-                  name={category.name}
-                  count={category.count}
-                />
-              ))}
-            </div>
-            <Link
-              href="/blog"
-              className="mt-8 inline-block bg-crust text-sapphire py-3 px-6 rounded-lg font-bold hover:bg-opacity-90 transition-colors"
-            >
-              View All Articles
-            </Link>
-          </div>
+    <Section title="Blog">
+      <p className="text-2xl md:text-4xl font-medium font-fraunces">
+        Have a look on my{" "}
+        <Link href="/blog" className="underline inline">
+          Blog
+        </Link>
+      </p>
+      <p className="text-xl md:text-2xl font-semibold mt-12">
+        A few of my learnings regarding frameworks or programming languages I
+        try out, updates to my setup, or other surely interesting topics in a
+        more or less readable format.
+      </p>
+      <div className="mt-12 flex flex-col gap-6">
+        {latestArticles.map((article) => (
+          <ArticleCard
+            key={article.slug}
+            title={article.title}
+            description={
+              article.description || "Read more about this topic on my blog"
+            }
+            date={article.date}
+            slug={article.slug}
+          />
+        ))}
+      </div>
+      <div className="hidden mt-12">
+        {" "}
+        {/**TODO: do sth with this, finish or remove */}
+        <h2 className="text-2xl font-bold mb-4">Categories</h2>
+        <div className="flex flex-col gap-4">
+          {categories.map((category) => (
+            <CategoryTag
+              key={category.name}
+              name={category.name}
+              count={category.count}
+            />
+          ))}
         </div>
       </div>
-    </Block>
+      <div className="mt-12 flex justify-center">
+        <Link
+          href="/blog"
+          className="bg-text text-bg py-3 px-8 rounded-xl font-bold hover:no-underline"
+        >
+          View All Articles
+        </Link>
+      </div>
+    </Section>
   );
 };
 
@@ -110,12 +103,14 @@ function ArticleCard({
   return (
     <Link
       href={`/blog/${slug}`}
-      className="bg-crust p-6 rounded-lg hover:shadow-lg transition-all"
+      className="group bg-mantle text-text p-6 rounded-xl hover:no-underline"
     >
-      <h3 className="text-xl font-bold text-sapphire">{title}</h3>
+      <h3 className="text-2xl font-medium font-fraunces">
+        <HoverItalic>{title}</HoverItalic>
+      </h3>
       <p className="text-subtext mt-2 line-clamp-2">{description}</p>
       {date && (
-        <div className="flex items-center gap-2 mt-4 text-sm text-gray-500">
+        <div className="flex items-center gap-2 mt-4 text-sm text-subtext">
           <Calendar size={14} />
           <span>{formatDate(date)}</span>
         </div>
@@ -126,7 +121,7 @@ function ArticleCard({
 
 function CategoryTag({ name, count }: { name: string; count: number }) {
   return (
-    <div className="flex items-center justify-between bg-bg text-text rounded-lg p-px h-10">
+    <div className="flex items-center justify-between bg-mantle text-text rounded-xl p-px h-10">
       <span className="font-semibold p-2 text-sapphire">{name}</span>
       <span className="bg-sapphire text-crust w-fit px-3 h-full text-sm rounded-r-md flex items-center justify-center">
         {count}

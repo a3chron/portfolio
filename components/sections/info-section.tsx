@@ -1,66 +1,53 @@
 import Link from "next/link";
-import { Block } from "../block";
+import { Section } from "./section";
 
 const InfoSection = () => {
   return (
-    <Block className="bg-mauve selection:text-mauve">
-      <div className="w-dvw 2xl:w-384 h-fit min-h-dvh p-4 md:py-12 md:px-24 flex flex-col item-center justify-center">
-        <p className="uppercase text-4xl md:text-6xl text-mauve bg-crust mt-0 md:-mt-24 mb-6 md:mb-16 w-fit p-1 px-2">
-          #1 About Me
-        </p>
-        <h1 className="text-2xl md:text-4xl font-bold space-y-4 md:space-y-0">
-          Hi, my name is Kurt Schambach. <br />I am a Software Engineer working
-          at{" "}
-          <Link
-            target="_blank"
-            href="https://www.titanom.com"
-            className="underline text-crust"
-          >
-            Titanom Solutions
-          </Link>
-          .
-        </h1>
-        <p className="text-xl md:text-2xl font-semibold font-plex mt-12 w-full md:w-2/3">
-          I mostly focus on Web-Development and LLMs, but from{" "}
-          <Link href="/projects/stellar" className="underline decoration-2">
-            time
-          </Link>{" "}
-          <Link href="/projects/gith" className="underline decoration-2">
-            to
-          </Link>{" "}
-          <Link
-            href="/projects/kaeru-kitchen"
-            className="underline decoration-2"
-          >
-            time
-          </Link>{" "}
-          I happen to do some other stuff too.
-        </p>
-        <p className="text-xl md:text-2xl font-semibold font-plex mt-12 w-full md:w-2/3">
-          I&apos;m currently pursuing my Bachelor&apos;s degree in Computer
-          Science at{" "}
-          <Link
-            href="https://www.tum.de"
-            target="_blank"
-            className="underline text-crust decoration-2"
-          >
-            TUM
-          </Link>
-          .
-        </p>
-        <p className="text-xl md:text-2xl font-semibold font-plex mt-12 w-full md:w-2/3">
-          In my free time, I work on some of my own{" "}
-          <Link href="/projects" className="underline text-crust decoration-2">
-            Projects
-          </Link>{" "}
-          or I write articles for my{" "}
-          <Link href="/blog" className="underline text-crust decoration-2">
-            Blog
-          </Link>
-          .
-        </p>
-      </div>
-    </Block>
+    <Section title="About Me" as="p">
+      <h1 className="text-2xl md:text-4xl font-medium font-fraunces space-y-4 md:space-y-0">
+        Hi, my name is Kurt Schambach. <br />I am a Software Engineer working at{" "}
+        <Link
+          target="_blank"
+          href="https://www.titanom.com"
+          className="underline"
+        >
+          Titanom Solutions
+        </Link>
+        .
+      </h1>
+      <p className="text-xl md:text-2xl font-semibold mt-12">
+        I mostly focus on Web-Development and LLMs, but from{" "}
+        <Link href="/projects/stellar" className="underline">
+          time
+        </Link>{" "}
+        <Link href="/projects/gith" className="underline">
+          to
+        </Link>{" "}
+        <Link href="/projects/kaeru-kitchen" className="underline">
+          time
+        </Link>{" "}
+        I happen to do some other stuff too.
+      </p>
+      <p className="text-xl md:text-2xl font-semibold mt-12">
+        I&apos;m currently pursuing my Bachelor&apos;s degree in Computer
+        Science at{" "}
+        <Link href="https://www.tum.de" target="_blank" className="underline">
+          TUM
+        </Link>
+        .
+      </p>
+      <p className="text-xl md:text-2xl font-semibold mt-12">
+        In my free time, I work on some of my own{" "}
+        <Link href="/projects" className="underline">
+          Projects
+        </Link>{" "}
+        or I write articles for my{" "}
+        <Link href="/blog" className="underline">
+          Blog
+        </Link>
+        .
+      </p>
+    </Section>
   );
 };
 

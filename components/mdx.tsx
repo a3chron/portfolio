@@ -129,37 +129,37 @@ export function Mdx({ code, page }: MdxProps) {
           label: "Note",
           icon: <InfoIcon className="size-5 shrink-0" />,
           className:
-            "border-blue bg-blue/5 text-blue! selection:bg-blue selection:text-black",
+            "border-blue bg-blue/5 text-blue!",
         },
         info: {
           label: "Note",
           icon: <InfoIcon className="size-5 shrink-0" />,
           className:
-            "border-blue bg-blue/5 text-blue! selection:bg-blue selection:text-black",
+            "border-blue bg-blue/5 text-blue!",
         },
         tip: {
           label: "Tip",
           icon: <LightbulbIcon className="size-5 shrink-0" />,
           className:
-            "border-green bg-green/5 text-green! selection:bg-green selection:text-black",
+            "border-green bg-green/5 text-green!",
         },
         important: {
           label: "Important",
           icon: <MessageSquareWarningIcon className="size-5 shrink-0" />,
           className:
-            "border-mauve bg-mauve/5 text-mauve! selection:bg-mauve selection:text-black",
+            "border-mauve bg-mauve/5 text-mauve!",
         },
         warning: {
           label: "Warning",
           icon: <TriangleAlertIcon className="size-5 shrink-0" />,
           className:
-            "border-yellow bg-yellow/5 text-yellow! selection:bg-yellow selection:text-black",
+            "border-yellow bg-yellow/5 text-yellow!",
         },
         caution: {
           label: "Caution",
           icon: <OctagonAlertIcon className="size-5 shrink-0" />,
           className:
-            "border-error bg-error/5 text-error! selection:bg-error selection:text-black",
+            "border-error bg-error/5 text-error!",
         },
       };
 
@@ -217,8 +217,8 @@ export function Mdx({ code, page }: MdxProps) {
           return typeConfigs[activeType].className;
         }
         return page === "blog"
-          ? "border-sapphire bg-sapphire/5 text-sapphire selection:bg-sapphire selection:text-black"
-          : "border-teal bg-teal/5 text-teal selection:bg-teal selection:text-black";
+          ? "border-sapphire bg-sapphire/5 text-sapphire"
+          : "border-teal bg-teal/5 text-teal";
       };
 
       return (
@@ -295,7 +295,7 @@ export function Mdx({ code, page }: MdxProps) {
     ),
     pre: ({ className, ...props }: { className: string }) => (
       <pre
-        className={clsx("overflow-x-auto rounded-2xl bg-crust! p-2", className)}
+        className={clsx("overflow-x-auto rounded-2xl bg-[#11111b]! p-2", className)}
         {...props}
       />
     ),

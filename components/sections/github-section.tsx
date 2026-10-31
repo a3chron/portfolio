@@ -3,7 +3,8 @@
 import { BookMarked, GitFork, Star, Users, Zap } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Block } from "../block";
+import { HoverItalic } from "@/components/hover-italic";
+import { Section } from "./section";
 
 interface GitHubStats {
   repos: number;
@@ -64,72 +65,62 @@ const GithubSection = () => {
   }, []);
 
   return (
-    <Block className="bg-blue selection:text-blue">
-      <div className="w-dvw 2xl:w-384 h-fit min-h-dvh p-4 md:py-12 md:px-24 flex flex-col item-center justify-center">
-        <h2 className="uppercase text-4xl md:text-6xl text-blue bg-crust my-6 md:mb-16 w-fit p-1 px-2">
-          #2 GitHub
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          <div className="col-span-2">
-            <p className="text-2xl md:text-4xl font-bold">
-              Find me on{" "}
-              <Link
-                href="https://github.com/a3chron"
-                target="_blank"
-                className="underline text-crust inline-flex"
-              >
-                GitHub
-              </Link>
-            </p>
-            <p className="text-xl md:text-2xl font-semibold mt-12 w-full md:w-2/3">
-              Most of my projects are public on GitHub, feel free to take a
-              look.
-            </p>
-            <div className="mt-12 grid grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-4xl">
-              <StatCard
-                icon={<BookMarked />}
-                value={stats.repos}
-                label="Repositories"
-                loading={loading}
-              />
-              <StatCard
-                icon={<Star />}
-                value={stats.stars}
-                label="Stars"
-                loading={loading}
-              />
-              <StatCard
-                icon={<Zap />}
-                value={stats.topLanguages}
-                label="Languages"
-                loading={loading}
-              />
-              <StatCard
-                icon={<Users />}
-                value={stats.followers}
-                label="Followers"
-                loading={loading}
-              />
-            </div>
-          </div>
-          <div>
-            <h2 className="text-2xl font-bold mb-4">Featured Repositories</h2>
-            <div className="grid grid-rows-2 gap-6">
-              {featuredRepos.map((repo) => (
-                <RepoCard
-                  key={repo.name}
-                  name={repo.name}
-                  description={repo.description}
-                  href={repo.html_url}
-                  stars={repo.stargazers_count}
-                  forks={repo.forks_count}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
+    <Section title="GitHub">
+      <p className="text-2xl md:text-4xl font-medium font-fraunces">
+        Find me on{" "}
+        <Link
+          href="https://github.com/a3chron"
+          target="_blank"
+          className="underline inline-flex"
+        >
+          GitHub
+        </Link>
+      </p>
+      <p className="text-xl md:text-2xl font-semibold mt-12">
+        Most of my projects are public on GitHub, feel free to take a look.
+      </p>
+      <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
+        <StatCard
+          icon={<BookMarked />}
+          value={stats.repos}
+          label="Repositories"
+          loading={loading}
+        />
+        <StatCard
+          icon={<Star />}
+          value={stats.stars}
+          label="Stars"
+          loading={loading}
+        />
+        <StatCard
+          icon={<Zap />}
+          value={stats.topLanguages}
+          label="Languages"
+          loading={loading}
+        />
+        <StatCard
+          icon={<Users />}
+          value={stats.followers}
+          label="Followers"
+          loading={loading}
+        />
       </div>
-    </Block>
+      <h3 className="text-2xl font-medium font-fraunces mt-12 mb-4">
+        Featured Repositories
+      </h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {featuredRepos.map((repo) => (
+          <RepoCard
+            key={repo.name}
+            name={repo.name}
+            description={repo.description}
+            href={repo.html_url}
+            stars={repo.stargazers_count}
+            forks={repo.forks_count}
+          />
+        ))}
+      </div>
+    </Section>
   );
 };
 
@@ -145,8 +136,8 @@ function StatCard({
   loading: boolean;
 }) {
   return (
-    <div className="bg-bg text-text p-3 py-6 rounded-lg flex flex-col items-center justify-center shadow-md hover:shadow-lg transition-shadow">
-      <div className="text-blue mb-2">{icon}</div>
+    <div className="bg-mantle text-text p-3 py-6 rounded-xl flex flex-col items-center justify-center">
+      <div className="mb-2">{icon}</div>
       <div className="text-3xl font-bold">
         {loading ? (
           <div className="animate-pulse bg-subtext rounded w-8 h-8" />
@@ -178,12 +169,12 @@ function RepoCard({
     <Link
       href={href}
       target="_blank"
-      className="group/repo-card border border-bg hover:no-underline p-6 rounded-lg transition-colors text-crust"
+      className="group bg-mantle hover:no-underline p-6 rounded-xl text-text"
     >
-      <h3 className="text-xl font-bold group-hover/repo-card:underline">
-        {name}
-      </h3>
-      <p className="text-gray-700 mt-2">{description}</p>
+      <h4 className="text-xl font-medium font-fraunces">
+        <HoverItalic>{name}</HoverItalic>
+      </h4>
+      <p className="text-subtext mt-2">{description}</p>
       <div className="flex gap-4 mt-4">
         <div className="flex items-center gap-1">
           <Star size={16} />

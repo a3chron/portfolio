@@ -27,10 +27,10 @@ export default function RSSLinks() {
       <div
         title="Click to copy rss link"
         onClick={() => setIsOpen((prevBool) => !prevBool)}
-        className="rounded-3xl bg-crust text-text p-2"
+        className="rounded-3xl bg-ink text-mantle p-2"
       >
         <div
-          className={`absolute flex top-1 text-crust right-3 cursor-pointer duration-500 ${
+          className={`absolute flex top-1 text-ink right-3 cursor-pointer duration-500 ${
             !isOpen && "translate-x-full opacity-0 transition-transform"
           }`}
         >

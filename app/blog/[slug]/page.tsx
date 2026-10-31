@@ -108,11 +108,11 @@ export default async function ArticlePage({ params }: Props) {
           </div>
           <article
             className={
-              "sm:px-4 py-12 mx-auto text-text text-lg font-bold bg-inherit prose sm:prose-quoteless selection:text-black selection:bg-sapphire"
+              "sm:px-4 py-12 mx-auto text-text text-lg font-bold bg-inherit prose sm:prose-quoteless"
             }
           >
             {!article.published && (
-              <div className="bg-warning/10 border-2 border-warning text-warning selection:bg-warning w-full h-fit p-6 flex flex-col items-center justify-center rounded-lg text-center mb-12">
+              <div className="bg-warning/10 border-2 border-warning text-warning w-full h-fit p-6 flex flex-col items-center justify-center rounded-lg text-center mb-12">
                 <h3 className="text-warning mt-0">
                   This article is not yet published
                 </h3>

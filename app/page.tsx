@@ -4,7 +4,7 @@ import ContactSection from "@/components/sections/contact-section";
 import GithubSection from "@/components/sections/github-section";
 import InfoSection from "@/components/sections/info-section";
 import ProjectsSection from "@/components/sections/projects-section";
-import SnapScrollContainer from "@/components/snap-scroll-container";
+import SectionScroller from "@/components/section-scroller";
 
 // Tells search engines who this site is about, and ties the name to the
 // a3chron handle and the profiles elsewhere.
@@ -38,13 +38,13 @@ export default function Home() {
           __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
         }}
       />
-      <SnapScrollContainer>
+      <SectionScroller>
         <InfoSection />
         <GithubSection />
-        <BlogSection />
         <ProjectsSection />
+        <BlogSection />
         <ContactSection />
-      </SnapScrollContainer>
+      </SectionScroller>
     </div>
   );
 }

@@ -3,7 +3,6 @@
 import {
   ExternalLink,
   FilmIcon,
-  GamepadIcon,
   Github,
   KeyboardIcon,
   Linkedin,
@@ -11,7 +10,8 @@ import {
   Mail,
 } from "lucide-react";
 import Link from "next/link";
-import { Block } from "../block";
+import { HoverItalic } from "@/components/hover-italic";
+import { Section } from "./section";
 
 type SocialType = {
   icon: React.ReactNode;
@@ -47,7 +47,7 @@ const ContactSection = () => {
       desc: "For the movie people",
     },
     {
-      icon: <GamepadIcon size={20} />,
+      icon: <ChessPawn size={20} />,
       href: "https://www.chess.com/member/a3chron",
       label: "Chess.com",
       desc: "For the chess people",
@@ -67,31 +67,19 @@ const ContactSection = () => {
   ];
 
   return (
-    <Block className="bg-yellow selection:text-yellow">
-      <div className="w-dvw 2xl:w-384 h-fit min-h-dvh p-4 md:py-12 md:px-24 flex flex-col item-center justify-center">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div>
-            <h2 className="uppercase text-4xl md:text-6xl text-yellow bg-crust my-6 md:mb-16 w-fit p-1 px-2">
-              #5 Contact
-            </h2>
-            <div>
-              <p className="text-2xl md:text-4xl font-bold flex items-center gap-3">
-                Let&apos;s Get In Touch
-              </p>
-              <p className="text-xl md:text-2xl font-semibold mt-12 w-full md:w-2/3">
-                Have a question or want to work together? Feel free to reach out
-                :)
-              </p>
-            </div>
-          </div>
-          <div className="grid grid-cols-1 gap-8">
-            {socials.map((social, index) => (
-              <SocialCard key={index} {...social} />
-            ))}
-          </div>
-        </div>
+    <Section title="Contact">
+      <p className="text-2xl md:text-4xl font-medium font-fraunces">
+        Let&apos;s Get In Touch
+      </p>
+      <p className="text-xl md:text-2xl font-semibold mt-12">
+        Have a question or want to work together? Feel free to reach out :)
+      </p>
+      <div className="mt-12 flex flex-col gap-6">
+        {socials.map((social) => (
+          <SocialCard key={social.label} {...social} />
+        ))}
       </div>
-    </Block>
+    </Section>
   );
 };
 
@@ -110,18 +98,45 @@ function SocialCard({
     <Link
       href={href}
       target="_blank"
-      className="bg-crust flex items-center gap-6 p-6 rounded-lg hover:shadow-md transition-shadow"
+      className="group bg-mantle text-text flex items-center gap-6 p-6 rounded-xl hover:no-underline"
     >
-      <div className="bg-yellow text-crust p-4 rounded-full">{icon}</div>
+      <div className="bg-text text-bg p-4 rounded-full">{icon}</div>
       <div>
-        <h3 className="text-lg font-bold text-yellow">{label}</h3>
-        <p className="text-subtext break-all max-w-full">{desc}</p>
+        <h3 className="text-xl font-medium font-fraunces">
+          <HoverItalic>{label}</HoverItalic>
+        </h3>
+        <p className="text-subtext italic break-all max-w-full">{desc}</p>
       </div>
       <div className="ml-auto">
-        <ExternalLink size={20} className="text-gray-400" />
+        <ExternalLink size={20} className="text-subtext" />
       </div>
     </Link>
   );
 }
 
 export default ContactSection;
+
+// lucide-react has no chess pieces in the version we use; a pawn drawn in
+// the same 24px / 2px-stroke style as its icons.
+function ChessPawn({ size = 24 }: { size?: number }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="6" r="4" />
+      <path d="M7 10h10" />
+      <path d="m9.5 10-1.5 8" />
+      <path d="m14.5 10 1.5 8" />
+      <path d="M5 20a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1z" />
+    </svg>
+  );
+}

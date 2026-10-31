@@ -1,73 +1,39 @@
 import type { Article as ArticleType } from "contentlayer/generated";
 import Link from "next/link";
+import readingTime from "reading-time";
+import { HoverItalic } from "@/components/hover-italic";
+import { formatDate } from "@/lib/format-date";
 
 type Props = {
   article: ArticleType;
 };
 
-import readingTime from "reading-time";
-import { formatDate } from "@/lib/format-date";
-
-const ColorHeader: React.FC<{ children: React.ReactNode; topic: string }> = ({
-  children,
-  topic,
-}) => {
-  switch (topic) {
-    case "Customization": {
-      return (
-        <div className="flex flex-row items-center justify-between h-14 w-full bg-crust text-text border-b-2 border-sapphire rounded-t-xl px-8">
-          {children}
-        </div>
-      );
-    }
-    case "AI": {
-      return (
-        <div className="flex flex-row items-center justify-between h-14 w-full bg-crust text-text border-b-2 border-overlay rounded-t-xl px-4 md:px-8">
-          {children}
-        </div>
-      );
-    }
-    default: {
-      return (
-        <div className="flex flex-row items-center justify-between h-14 w-full bg-crust text-text border-b-2 border-subtext rounded-t-xl px-8">
-          {children}
-        </div>
-      );
-    }
-  }
-};
-
+// One full-width row: title and description on the left, date and reading
+// time on the right (below on small screens).
 export const Article: React.FC<Props> = ({ article }) => {
   return (
     <Link
       href={`/blog/${article.slug}`}
-      // min-h rather than a fixed height: the grid stretches every card in a
-      // row to the tallest one, so a long title + description grows the row
-      // instead of overflowing the card.
-      className="group flex w-full sm:w-[396px] sm:min-h-72 bg-mantle rounded-2xl hover:no-underline"
+      className="group w-full bg-mantle text-text rounded-xl px-7 py-5 hover:no-underline"
     >
-      <article className="flex flex-col w-full">
-        <ColorHeader topic={article.topic}>
-          <span className="text-xs duration-300 text-inherit">
-            {article.date ? (
-              <time dateTime={new Date(article.date).toISOString()}>
-                {formatDate(article.date)}
-              </time>
-            ) : (
-              <span>SOON</span>
-            )}
-          </span>
-          <span className="text-xs duration-300 group-hover:bg-sapphire group-hover:text-black rounded-md p-1 px-3">
-            {readingTime(`${article.body.code}`).text}
-          </span>
-        </ColorHeader>
-        <div className="flex-1 p-8 border-2 border-t-0 border-mantle rounded-b-2xl">
-          <h2 className="z-20 text-xl font-medium duration-300 lg:text-3xl text-text font-display">
-            {article.title}
+      <article className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-10">
+        <div>
+          <h2 className="text-2xl font-medium font-fraunces">
+            <HoverItalic>{article.title}</HoverItalic>
           </h2>
-          <p className="z-20 mt-4 font-bold duration-300 text-subtext block">
+          <p className="mt-1 text-lg font-[350] font-fraunces text-subtext">
             {article.description}
           </p>
+        </div>
+        <div className="shrink-0 flex gap-x-3 text-xs text-subtext sm:flex-col sm:items-end sm:gap-y-1 sm:pt-2">
+          {article.date ? (
+            <time dateTime={article.date.slice(0, 10)}>
+              {formatDate(article.date)}
+            </time>
+          ) : (
+            <span>soon</span>
+          )}
+          <span>{readingTime(`${article.body.code}`).text}</span>
         </div>
       </article>
     </Link>

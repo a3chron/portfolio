@@ -1,26 +1,54 @@
 @import "tailwindcss";
 
 @theme {
-  --color-text: #cdd6f4;
-  --color-subtext: #a6adc8;
-  --color-overlay: #6c7086;
-  --color-bg: #1e1e2e;
-  --color-mantle: #181825;
-  --color-accent: #fab387;
-  --color-crust: #11111b;
-  --color-mauve: #cba6f7;
-  --color-blue: #89b4fa;
-  --color-teal: #94e2d5;
-  --color-green: #a6e3a1;
-  --color-sapphire: #74c7ec;
-  --color-yellow: #f9e2af;
-  --color-error: #f38ba8;
-  --color-warning: #fab387;
+  /* Light theme: black on cream (bg) and sand (mantle/crust: header, cards).
+     The old catppuccin accent names all map to black so existing classes
+     stay monochrome; only the semantic green/error/warning keep a hue. */
+  --color-text: #000000;
+  --color-subtext: #57534a;
+  --color-overlay: #8a8476;
+  --color-bg: #f0eee6;
+  --color-mantle: #ebdbbc;
+  --color-header: #e8e6dc;
+  --color-accent: #000000;
+  --color-crust: #ebdbbc;
+  /* Very dark warm brown for the inverted floating buttons (GitHub, RSS). */
+  --color-ink: #2b2620;
+  /* Muted warm tones: section labels and the landing-page index. */
+  --color-faint: #bcae90;
+  --color-faint-line: #cdc1a5;
+  --color-soft: #9a8e78;
+  --color-soft-text: #877b66;
+  --color-label: #918571;
+  --color-mauve: #000000;
+  --color-blue: #000000;
+  --color-teal: #000000;
+  --color-green: #2e7d32;
+  --color-sapphire: #000000;
+  --color-yellow: #000000;
+  --color-error: #b3261e;
+  --color-warning: #9a5b00;
 
   --font-family-display: var(--font-calsans);
   --font-family-plex:
     "IBM Plex", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
+
+  /* Card titles turning italic on hover (components/hover-italic.tsx).
+     16deg = Fraunces' italic angle, so the swap itself doesn't move. */
+  --animate-lean-in: lean-in 330ms cubic-bezier(0.65, 0, 0.35, 1);
+  --animate-lean-out: lean-out 330ms cubic-bezier(0.65, 0, 0.35, 1);
+
+  @keyframes lean-in {
+    from {
+      transform: skewX(16deg);
+    }
+  }
+  @keyframes lean-out {
+    from {
+      transform: skewX(-16deg);
+    }
+  }
 }
 
 @layer components {
@@ -36,6 +64,14 @@
 }
 
 @layer base {
+  /* One underline thickness everywhere (same as decoration-2); otherwise it
+     follows the font and Fraunces draws a much thinner one than IBM Plex. */
+  *,
+  ::before,
+  ::after {
+    text-decoration-thickness: 2px;
+  }
+
   .text-edge-outline {
     -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
   }
@@ -53,6 +89,21 @@
 
 body {
   font-family: "IBM Plex", monospace, sans-serif;
+  color: var(--color-text);
+}
+
+::selection {
+  background: var(--color-text);
+  color: var(--color-bg);
+}
+
+/* Display font for headings / large text. Weight comes from the usual
+   font-* classes (font-medium = 500 is the intended default). */
+@utility font-fraunces {
+  font-family: var(--font-fraunces), serif;
+  font-variation-settings:
+    "SOFT" 100,
+    "WONK" 0;
 }
 
 .subheading-anchor {

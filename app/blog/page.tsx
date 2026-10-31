@@ -16,9 +16,9 @@ export default async function Blog() {
   if (sorted.length !== 0) {
     return (
       <div className="w-full h-full overflow-y-scroll px-2">
-        <div className="bg-sapphire rounded-3xl w-full h-fit">
-          <div className="w-full h-full flex flex-col items-center justify-center py-4">
-            <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-8 w-full sm:w-fit h-full">
+        <div className="w-full h-fit">
+          <div className="w-full h-full flex flex-col items-center justify-center pt-16 pb-24 md:pt-24">
+            <div className="flex flex-col gap-8 w-full max-w-4xl px-4 h-full">
               {sorted.map((article) => (
                 <Article key={article.slug} article={article} />
               ))}

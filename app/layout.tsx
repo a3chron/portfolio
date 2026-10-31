@@ -1,8 +1,19 @@
 import "@/style/global.css";
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
+import { Fraunces } from "next/font/google";
 import GithubRepo from "@/components/github-repo";
 import ToggleFavicon from "@/components/toggle-favicon";
+
+// Variable font, so any weight works via font-weight; the default weight and
+// the SOFT/WONK axes are set on body in global.css.
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  axes: ["SOFT", "WONK", "opsz"],
+  // Italic for the hover effect on card titles (components/hover-italic).
+  style: ["normal", "italic"],
+  variable: "--font-fraunces",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -82,7 +93,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={fraunces.variable}>
       <body
         className={`bg-bg ${
           process.env.NODE_ENV === "development" ? "debug-screens" : undefined

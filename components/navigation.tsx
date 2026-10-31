@@ -18,10 +18,12 @@ const Navigation = ({ className }: { className?: string }) => {
       <div className="max-w-384 w-full flex flex-row items-center justify-between p-4 md:px-12 lg:px-24 mx-auto">
         <Link
           href="/"
-          className="mt-0 w-fit flex flex-col items-center justify-center text-crust font-bold font-plex text-3xl whitespace-nowrap no-underline!"
+          className="mt-0 w-fit flex flex-col items-center justify-center text-text font-bold font-plex text-[1.7rem] whitespace-nowrap no-underline!"
         >
-          <span className="text-lg">Kurt Schambach</span>
-          <span className="pl-6">a3chron</span>
+          <span className="text-[1.2rem] leading-tight font-fraunces font-normal">
+            Kurt Schambach
+          </span>
+          <span className="pl-6 leading-tight">a3chron</span>
         </Link>
         <div>
           {menuOpen && (

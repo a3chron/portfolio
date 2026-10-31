@@ -4,7 +4,7 @@
   @apply bg-[#1e1e2e] rounded-2xl my-4;
 }
 [data-rehype-pretty-code-figure] code {
-  @apply break-words text-sm bg-[#11111b];
+  @apply break-words text-sm bg-[#11111b] text-[#cdd6f4];
   counter-reset: line;
   box-decoration-break: clone;
 }
