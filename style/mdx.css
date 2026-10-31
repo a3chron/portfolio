@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* Code blocks: the Roast theme (themes/roast.json) sets the dark brown
+/* Code blocks: the Roast theme (themes/roast.json) sets the sand
    background inline on <pre>; the code itself stays transparent so the
    block is one even surface with the same padding on every side. */
 [data-rehype-pretty-code-figure] {
@@ -18,16 +18,16 @@
   width: 1rem;
   margin-right: 1rem;
   text-align: right;
-  color: #6e6352;
+  color: #9a8e78;
 }
 [data-rehype-pretty-code-figure] .line--highlighted {
-  @apply bg-[#3a3128] rounded-lg;
+  @apply bg-[#ddd1b6] rounded-lg;
 }
 [data-rehype-pretty-code-figure] .line-highlighted span {
   @apply relative;
 }
 [data-rehype-pretty-code-figure] .word--highlighted {
-  @apply rounded-lg bg-[#4a3e31] p-1;
+  @apply rounded-lg bg-[#d6c7a6] p-1;
 }
 [data-rehype-pretty-code-title] {
   @apply mt-4 py-2 px-4 text-sm;

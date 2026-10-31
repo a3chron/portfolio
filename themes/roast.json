@@ -1,9 +1,9 @@
 {
   "name": "Roast",
-  "type": "dark",
+  "type": "light",
   "colors": {
-    "editor.background": "#1f1a15",
-    "editor.foreground": "#e8dcc4"
+    "editor.background": "#e9e0cc",
+    "editor.foreground": "#2b2620"
   },
   "tokenColors": [
     {
@@ -24,7 +24,7 @@
         "variable.language"
       ],
       "settings": {
-        "foreground": "#d98a6a"
+        "foreground": "#a4462a"
       }
     },
     {
@@ -37,7 +37,7 @@
         "invalid.illegal"
       ],
       "settings": {
-        "foreground": "#a8997f"
+        "foreground": "#7d705b"
       }
     },
     {
@@ -49,7 +49,7 @@
         "markup.inline.raw"
       ],
       "settings": {
-        "foreground": "#b5bd85"
+        "foreground": "#5b6a24"
       }
     },
     {
@@ -59,7 +59,7 @@
         "constant.other.placeholder"
       ],
       "settings": {
-        "foreground": "#d9a46a"
+        "foreground": "#9a5b00"
       }
     },
     {
@@ -71,7 +71,7 @@
         "support.constant"
       ],
       "settings": {
-        "foreground": "#e5b567"
+        "foreground": "#9a5b00"
       }
     },
     {
@@ -82,7 +82,7 @@
         "variable.function"
       ],
       "settings": {
-        "foreground": "#e9c98c"
+        "foreground": "#7a4f12"
       }
     },
     {
@@ -95,7 +95,7 @@
         "entity.name.namespace"
       ],
       "settings": {
-        "foreground": "#d4a28c"
+        "foreground": "#8c3f4a"
       }
     },
     {
@@ -106,7 +106,7 @@
         "variable"
       ],
       "settings": {
-        "foreground": "#e8dcc4"
+        "foreground": "#2b2620"
       }
     },
     {
@@ -124,7 +124,7 @@
         "entity.other.attribute-name.single.nix"
       ],
       "settings": {
-        "foreground": "#c9b48a"
+        "foreground": "#6b5232"
       }
     },
     {
@@ -134,7 +134,7 @@
         "entity.other.attribute-name.table.toml"
       ],
       "settings": {
-        "foreground": "#e9c98c",
+        "foreground": "#7a4f12",
         "fontStyle": "bold"
       }
     },
@@ -145,7 +145,7 @@
         "punctuation.definition.variable"
       ],
       "settings": {
-        "foreground": "#d9a46a"
+        "foreground": "#9a5b00"
       }
     },
     {
@@ -155,7 +155,7 @@
         "entity.name.command"
       ],
       "settings": {
-        "foreground": "#e9c98c"
+        "foreground": "#7a4f12"
       }
     },
     {
@@ -165,7 +165,7 @@
         "constant.other.path"
       ],
       "settings": {
-        "foreground": "#b5bd85"
+        "foreground": "#5b6a24"
       }
     }
   ]

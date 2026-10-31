@@ -108,6 +108,9 @@ body {
 
 .subheading-anchor {
   position: absolute;
+  /* The heading is Fraunces; the "#" keeps the body's IBM Plex Mono. */
+  font-family: "IBM Plex", monospace;
+  font-weight: normal;
   text-decoration: none;
   transform: translateX(-32);
   display: none;

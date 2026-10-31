@@ -1,4 +1,6 @@
-import fs from "node:fs";
+// Imported (not read at runtime) so the theme is bundled into the config and
+// editing it invalidates the contentlayer cache.
+import roast from "./themes/roast.json";
 import { defineDocumentType, makeSource } from "contentlayer2/source-files";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrettyCode from "rehype-pretty-code";
@@ -116,7 +118,7 @@ export default makeSource({
       [
         rehypePrettyCode,
         {
-          theme: JSON.parse(fs.readFileSync("./themes/roast.json", "utf-8")),
+          theme: roast,
           // Fenced blocks without a language still go through the
           // highlighter, so every block gets the same figure styling.
           defaultLang: { block: "plaintext" },

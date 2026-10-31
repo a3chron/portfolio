@@ -25,7 +25,7 @@ export function Mdx({ code, page }: MdxProps) {
     h1: ({ className, ...props }: { className: string }) => (
       <h1
         className={clsx(
-          "not-first:mt-16 scroll-m-20 text-4xl font-bold tracking-tight text-text group/heading",
+          "not-first:mt-16 scroll-m-20 text-4xl font-fraunces font-medium tracking-tight text-text group/heading",
           className,
         )}
         {...props}
@@ -34,7 +34,7 @@ export function Mdx({ code, page }: MdxProps) {
     h2: ({ className, ...props }: { className: string }) => (
       <h2
         className={clsx(
-          "mt-12 scroll-m-10 underline text-text pb-1 text-3xl font-semibold tracking-tight first:mt-0 group/heading",
+          "mt-12 scroll-m-10 underline text-text pb-1 text-3xl font-fraunces font-medium tracking-tight first:mt-0 group/heading",
           className,
         )}
         {...props}
@@ -43,7 +43,7 @@ export function Mdx({ code, page }: MdxProps) {
     h3: ({ className, ...props }: { className: string }) => (
       <h3
         className={clsx(
-          "mt-8 scroll-m-10 text-2xl text-text font-semibold tracking-tight group/heading",
+          "mt-8 scroll-m-10 text-2xl text-text font-fraunces font-medium tracking-tight group/heading",
           className,
         )}
         {...props}
@@ -52,7 +52,7 @@ export function Mdx({ code, page }: MdxProps) {
     h4: ({ className, ...props }: { className: string }) => (
       <h4
         className={clsx(
-          "mt-8 scroll-m-10 text-xl text-text font-semibold tracking-tight group/heading",
+          "mt-8 scroll-m-10 text-xl text-text font-fraunces font-medium tracking-tight group/heading",
           className,
         )}
         {...props}
@@ -61,7 +61,7 @@ export function Mdx({ code, page }: MdxProps) {
     h5: ({ className, ...props }: { className: string }) => (
       <h5
         className={clsx(
-          "mt-8 scroll-m-10 text-lg text-text font-semibold tracking-tight group/heading",
+          "mt-8 scroll-m-10 text-lg text-text font-fraunces font-medium tracking-tight group/heading",
           className,
         )}
         {...props}
@@ -70,7 +70,7 @@ export function Mdx({ code, page }: MdxProps) {
     h6: ({ className, ...props }: { className: string }) => (
       <h6
         className={clsx(
-          "mt-8 scroll-m-10 text-text font-semibold tracking-tight group/heading",
+          "mt-8 scroll-m-10 text-text font-fraunces font-medium tracking-tight group/heading",
           className,
         )}
         {...props}
@@ -289,7 +289,13 @@ export function Mdx({ code, page }: MdxProps) {
     ),
     pre: ({ className, ...props }: { className: string }) => (
       <pre
-        className={clsx("overflow-x-auto rounded-2xl p-4", className)}
+        className={clsx(
+          "overflow-x-auto rounded-2xl p-4",
+          // Articles sit on sand, the same tone as the theme background, so
+          // code there gets the cream page colour instead.
+          page === "blog" && "bg-bg!",
+          className,
+        )}
         {...props}
       />
     ),
@@ -305,13 +311,14 @@ export function Mdx({ code, page }: MdxProps) {
     ),
     code: ({ className, ...props }: { className: string }) =>
       // Code blocks carry data-language (rehype-pretty-code); only inline
-      // code gets the sand pill.
+      // code gets the pill (cream on the sand article background).
       "data-language" in props ? (
         <code className={clsx("text-sm", className)} {...props} />
       ) : (
         <code
           className={clsx(
-            "relative rounded bg-crust text-text inline-block px-2 font-mono font-light",
+            "relative rounded text-text inline-block px-2 font-mono font-light",
+            page === "blog" ? "bg-bg" : "bg-crust",
             className,
           )}
           {...props}
