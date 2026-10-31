@@ -12,7 +12,7 @@ const ProjectsSection = () => {
     <Section title="Projects">
       <p className="text-2xl md:text-4xl font-medium font-fraunces">
         Check out my{" "}
-        <Link href="/projects" className="underline">
+        <Link href="/projects" className="italic hover:underline">
           Projects
         </Link>
       </p>

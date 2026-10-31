@@ -41,7 +41,7 @@ const BlogSection = () => {
     <Section title="Blog">
       <p className="text-2xl md:text-4xl font-medium font-fraunces">
         Have a look on my{" "}
-        <Link href="/blog" className="underline inline">
+        <Link href="/blog" className="italic hover:underline inline">
           Blog
         </Link>
       </p>

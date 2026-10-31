@@ -71,7 +71,7 @@ const GithubSection = () => {
         <Link
           href="https://github.com/a3chron"
           target="_blank"
-          className="underline inline-flex"
+          className="italic hover:underline inline-flex"
         >
           GitHub
         </Link>
