@@ -128,38 +128,32 @@ export function Mdx({ code, page }: MdxProps) {
         note: {
           label: "Note",
           icon: <InfoIcon className="size-5 shrink-0" />,
-          className:
-            "border-blue bg-blue/5 text-blue!",
+          className: "border-blue bg-blue/5 text-blue!",
         },
         info: {
           label: "Note",
           icon: <InfoIcon className="size-5 shrink-0" />,
-          className:
-            "border-blue bg-blue/5 text-blue!",
+          className: "border-blue bg-blue/5 text-blue!",
         },
         tip: {
           label: "Tip",
           icon: <LightbulbIcon className="size-5 shrink-0" />,
-          className:
-            "border-green bg-green/5 text-green!",
+          className: "border-green bg-green/5 text-green!",
         },
         important: {
           label: "Important",
           icon: <MessageSquareWarningIcon className="size-5 shrink-0" />,
-          className:
-            "border-mauve bg-mauve/5 text-mauve!",
+          className: "border-mauve bg-mauve/5 text-mauve!",
         },
         warning: {
           label: "Warning",
           icon: <TriangleAlertIcon className="size-5 shrink-0" />,
-          className:
-            "border-yellow bg-yellow/5 text-yellow!",
+          className: "border-yellow bg-yellow/5 text-yellow!",
         },
         caution: {
           label: "Caution",
           icon: <OctagonAlertIcon className="size-5 shrink-0" />,
-          className:
-            "border-error bg-error/5 text-error!",
+          className: "border-error bg-error/5 text-error!",
         },
       };
 
@@ -295,7 +289,7 @@ export function Mdx({ code, page }: MdxProps) {
     ),
     pre: ({ className, ...props }: { className: string }) => (
       <pre
-        className={clsx("overflow-x-auto rounded-2xl bg-[#11111b]! p-2", className)}
+        className={clsx("overflow-x-auto rounded-2xl p-4", className)}
         {...props}
       />
     ),
@@ -309,15 +303,20 @@ export function Mdx({ code, page }: MdxProps) {
         {...props}
       />
     ),
-    code: ({ className, ...props }: { className: string }) => (
-      <code
-        className={clsx(
-          "relative rounded bg-crust text-text inline-block px-2 font-mono font-light",
-          className,
-        )}
-        {...props}
-      />
-    ),
+    code: ({ className, ...props }: { className: string }) =>
+      // Code blocks carry data-language (rehype-pretty-code); only inline
+      // code gets the sand pill.
+      "data-language" in props ? (
+        <code className={clsx("text-sm", className)} {...props} />
+      ) : (
+        <code
+          className={clsx(
+            "relative rounded bg-crust text-text inline-block px-2 font-mono font-light",
+            className,
+          )}
+          {...props}
+        />
+      ),
     Image,
   };
 

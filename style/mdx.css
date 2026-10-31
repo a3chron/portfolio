@@ -1,10 +1,13 @@
 @import "tailwindcss";
 
+/* Code blocks: the Roast theme (themes/roast.json) sets the dark brown
+   background inline on <pre>; the code itself stays transparent so the
+   block is one even surface with the same padding on every side. */
 [data-rehype-pretty-code-figure] {
-  @apply bg-[#1e1e2e] rounded-2xl my-4;
+  @apply my-4;
 }
 [data-rehype-pretty-code-figure] code {
-  @apply break-words text-sm bg-[#11111b] text-[#cdd6f4];
+  @apply break-words text-sm bg-transparent;
   counter-reset: line;
   box-decoration-break: clone;
 }
@@ -15,16 +18,16 @@
   width: 1rem;
   margin-right: 1rem;
   text-align: right;
-  color: #526777;
+  color: #6e6352;
 }
 [data-rehype-pretty-code-figure] .line--highlighted {
-  @apply bg-zinc-300 rounded-lg;
+  @apply bg-[#3a3128] rounded-lg;
 }
 [data-rehype-pretty-code-figure] .line-highlighted span {
   @apply relative;
 }
 [data-rehype-pretty-code-figure] .word--highlighted {
-  @apply rounded-lg bg-zinc-300 text-black p-1;
+  @apply rounded-lg bg-[#4a3e31] p-1;
 }
 [data-rehype-pretty-code-title] {
   @apply mt-4 py-2 px-4 text-sm;

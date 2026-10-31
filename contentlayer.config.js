@@ -116,9 +116,10 @@ export default makeSource({
       [
         rehypePrettyCode,
         {
-          theme: JSON.parse(
-            fs.readFileSync("./themes/catppuccin-mocha.json", "utf-8"),
-          ),
+          theme: JSON.parse(fs.readFileSync("./themes/roast.json", "utf-8")),
+          // Fenced blocks without a language still go through the
+          // highlighter, so every block gets the same figure styling.
+          defaultLang: { block: "plaintext" },
           onVisitLine(node) {
             // Prevent lines from collapsing in `display: grid` mode, and allow empty
             // lines to be copy/pasted
